@@ -15,7 +15,7 @@ A README is often the first item a visitor will see when visiting your repositor
 
 
 ----
-## Adding headings to your Readme.md file
+## 1. Adding headings to your Readme.md file
 By using the codes below you will be able to add a heading of choice to your Readme.md file to make your Readme more attractive. 
 
 # Heading 1
@@ -40,7 +40,7 @@ Markup :  #### Heading 4 ####
 
 ----
 
-## Making paragraphs in a Readme.md file: How to start a new sentence or paragraph
+## 2. Making paragraphs in a Readme.md file: How to start a new sentence or paragraph
 The easiest way is to ensure that each lin ends with two spaces, for example:  
 A  
 B  
@@ -53,7 +53,7 @@ C <br />
 
 ----
 
-## Emphasizing text in a Readme.md file
+## 3. Emphasizing text in a Readme.md file
 Emphasis (schuingedrukt), aka italics, with _underscores_ before and after the word that should be emphasized.  
 Strong emphasis (dikgedrukt), aka bold, with **stars** before and after the word that should be emphasized.  
 Combined emphasis (schuingedrukt en dikgedrukt), with **stars and _underscores_**.  
