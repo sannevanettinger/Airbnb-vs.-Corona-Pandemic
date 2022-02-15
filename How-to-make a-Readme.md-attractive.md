@@ -22,14 +22,16 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 ### Adding listings to your Readme.md file
 This will create a number list in your Markdown file. 
-_1. List item
-__1.1 List item
-_2. List item
+1. Numbered list item A
+2. Numbered list item B
+           i. Numbered list item B1
+           ii. Numbered list item B2
+4. Numbered list item C
 
 
 This will create a bullet point list in your Markdown file.
-Markup: * Bullet list item 1
-            * Item 1.1
-            * Item 1.2
-                * Item 1.2A, etc.
-        * Bullet list item 2
+* Bullet list item 1
+           * Item 1.1
+           * Item 1.2
+                      * Item 1.2A, etc.
+* Bullet list item 2
