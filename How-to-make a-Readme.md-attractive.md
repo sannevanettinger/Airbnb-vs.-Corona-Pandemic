@@ -32,7 +32,12 @@ This will create a bullet point list in your Markdown file.
 * Bullet list item 2
 * Bullet list item 3
 
-### Adding emoticons
+### Adding emoticons to your Readme.md file
 Try using this link (https://www.webfx.com/tools/emoji-cheat-sheet/) 
 :sunglasses:
-:hourglass_flowing_sand:
+
+### Adding tables to your Readme.md file
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
