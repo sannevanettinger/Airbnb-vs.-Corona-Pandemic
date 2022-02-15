@@ -1,5 +1,6 @@
 # How to make a Readme.md attractive. Try using this codes
-A readme is a description of your projects.  You can add a README file to your repository to tell other people why your project is useful, what they can do with your project, and how they can use it.
+A readme is a description of your projects.  
+You can add a README file to your repository to tell other people why your project is useful, what they can do with your project, and how they can use it.
 (https://dev.to/silentlad/how-to-write-beautiful-and-meaningful-readme-md-jp3)(https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md)
 
 A README is often the first item a visitor will see when visiting your repository. README files typically include information on:
