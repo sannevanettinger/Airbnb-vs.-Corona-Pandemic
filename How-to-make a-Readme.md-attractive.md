@@ -1,6 +1,5 @@
 # How to make a Readme.md attractive. Try using this codes
-A readme is a description of your projects.  
-You can add a README file to your repository to tell other people why your project is useful, what they can do with your project, and how they can use it.
+A readme is a description of your projects. You can add a README file to your repository to tell other people why your project is useful, what they can do with your project, and how they can use it.
 (https://dev.to/silentlad/how-to-write-beautiful-and-meaningful-readme-md-jp3)(https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md)
 
 A README is often the first item a visitor will see when visiting your repository. README files typically include information on:
@@ -34,6 +33,19 @@ Markup :  ### Heading 3 ###
 
 #### Heading 4
 Markup :  #### Heading 4 ####
+
+----
+
+## Making paragraphs in a Readme.md file
+The easiest way is to ensure that each lin ends with two spaces, for example:  
+A  
+B  
+C  
+
+It can also be done by adding this <br /> tags.  
+A <br />
+B <br />
+C <br />
 
 ----
 
