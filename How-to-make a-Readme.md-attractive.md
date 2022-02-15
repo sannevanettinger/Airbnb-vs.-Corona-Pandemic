@@ -61,7 +61,7 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 ----
 
-## Adding listings to your Readme.md file
+## 4. Adding listings to your Readme.md file
 This will create a number list in your Markdown file. 
 1. Numbered list item A
 2. Numbered list item B
@@ -75,7 +75,7 @@ This will create a bullet point list in your Markdown file.
 
 ----
 
-## Adding tables to your Readme.md file
+## 5. Adding tables to your Readme.md file
 First Header  | Second Header
 ------------- | -------------
 Content Cell  | Content Cell
@@ -88,13 +88,13 @@ Content Cell  | Content Cell | Content Cell
 
 ----
 
-## Adding images to your Readme.md file
+## 6. Adding images to your Readme.md file
 Upload your image in a special folder at the repositiry, and then link the filename like this:  
 -![Screenshot](docs/images/screenshot.png)-
 
 ----
 
-## The use of relative links and image paths in README files
+## 7. The use of relative links and image paths in README files
 You can define relative links and image paths in your rendered files to help readers navigate to other files in your repository.
 
 A relative link is a link that is relative to the current file. For example, if you have a README file in root of your repository, and you have another file in docs/CONTRIBUTING.md, the relative link to CONTRIBUTING.md in your README might look like this:
@@ -106,7 +106,7 @@ Relative links are easier for users who clone your repository. Absolute links ma
 
 ----
 
-## Adding emoticons to your Readme.md file
+## 8. Adding emoticons to your Readme.md file
 Try using this link (https://www.webfx.com/tools/emoji-cheat-sheet/)  
 :sunglasses:
 
