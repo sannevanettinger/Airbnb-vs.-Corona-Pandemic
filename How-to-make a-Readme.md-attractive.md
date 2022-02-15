@@ -24,27 +24,15 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 This will create a number list in your Markdown file. 
 1. Numbered list item A
 2. Numbered list item B
-i. Numbered list item B1
-ii. Numbered list item B2
-4. Numbered list item C
+3. Numbered list item C
 
 
 This will create a bullet point list in your Markdown file.
 * Bullet list item 1
-** Item 1.1
-** Item 1.2
-*** Item 1.2A, etc.
 * Bullet list item 2
+* Bullet list item 3
 
-
- Markup : * Bullet list
-              * Nested bullet
-                  * Sub-nested bullet etc
-          * Bullet list item 2
-
--OR-
-
- Markup : - Bullet list
-              - Nested bullet
-                  - Sub-nested bullet etc
-          - Bullet list item 2 
+### Adding emoticons
+Try using this link (https://www.webfx.com/tools/emoji-cheat-sheet/) 
+:sunglasses:
+:hourglass_flowing_sand:
