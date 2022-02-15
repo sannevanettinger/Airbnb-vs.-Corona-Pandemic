@@ -36,7 +36,7 @@ Markup :  #### Heading 4 ####
 
 ----
 
-## Making paragraphs in a Readme.md file
+## Making paragraphs in a Readme.md file: How to start a new sentence or paragraph
 The easiest way is to ensure that each lin ends with two spaces, for example:  
 A  
 B  
@@ -68,11 +68,6 @@ This will create a bullet point list in your Markdown file.
 * Bullet list item 2
 * Bullet list item 3
 
-----
-
-## Adding emoticons to your Readme.md file
-Try using this link (https://www.webfx.com/tools/emoji-cheat-sheet/) 
-:sunglasses:
 
 ----
 
@@ -98,3 +93,10 @@ A relative link is a link that is relative to the current file. For example, if 
 GitHub will automatically transform your relative link or image path based on whatever branch you're currently on, so that the link or path always works. You can use all relative link operands, such as ./ and ../.
 
 Relative links are easier for users who clone your repository. Absolute links may not work in clones of your repository - we recommend using relative links to refer to other files within your repository.
+
+----
+
+## Adding emoticons to your Readme.md file
+Try using this link (https://www.webfx.com/tools/emoji-cheat-sheet/)  
+:sunglasses:
+
