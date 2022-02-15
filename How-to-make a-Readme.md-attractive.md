@@ -35,3 +35,16 @@ This will create a bullet point list in your Markdown file.
 ** Item 1.2
 *** Item 1.2A, etc.
 * Bullet list item 2
+
+
+ Markup : * Bullet list
+              * Nested bullet
+                  * Sub-nested bullet etc
+          * Bullet list item 2
+
+-OR-
+
+ Markup : - Bullet list
+              - Nested bullet
+                  - Sub-nested bullet etc
+          - Bullet list item 2 
