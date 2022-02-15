@@ -84,6 +84,12 @@ Content Cell  | Content Cell | Content Cell
 
 ----
 
+## Adding images to your Readme.md file
+Upload your image in a special folder at the repositiry, and then link the filename like this:  
+-![Screenshot](docs/images/screenshot.png)-
+
+----
+
 ## The use of relative links and image paths in README files
 You can define relative links and image paths in your rendered files to help readers navigate to other files in your repository.
 
