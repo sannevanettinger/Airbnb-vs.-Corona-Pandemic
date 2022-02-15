@@ -42,7 +42,7 @@ A
 B  
 C  
 
-It can also be done by adding this <br /> tags.  
+It can also be done by adding this (<br />) tag.  
 A <br />
 B <br />
 C <br />
