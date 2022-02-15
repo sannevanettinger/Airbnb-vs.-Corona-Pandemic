@@ -50,10 +50,9 @@ C <br />
 ----
 
 ## Emphasizing text in a Readme.md file
-Emphasis (schuingedrukt), aka italics, with _underscores_ before and after the word that should be emphasized. 
-Strong emphasis (dikgedrukt), aka bold, with **stars** before and after the word that should be emphasized.
-Combined emphasis (schuingedrukt en dikgedrukt), with **stars and _underscores_**.
-
+Emphasis (schuingedrukt), aka italics, with _underscores_ before and after the word that should be emphasized.  
+Strong emphasis (dikgedrukt), aka bold, with **stars** before and after the word that should be emphasized.  
+Combined emphasis (schuingedrukt en dikgedrukt), with **stars and _underscores_**.  
 Strikethrough uses two tildes. ~~Scratch this.~~
 
 ----
