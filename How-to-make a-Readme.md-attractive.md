@@ -2,6 +2,17 @@
 A readme is a description of your projects. 
 (https://dev.to/silentlad/how-to-write-beautiful-and-meaningful-readme-md-jp3)
 
+----
+### Adding headings to your Readme.md file
+By using the codes below you will be able to add a heading of choose to your Readme.md file to make your Readme more attractive. 
+
+Markup :  # Heading 1 #
+
+-OR-
+
+Markup :  ============= (below H1 text)
+
+
 # Heading
 
 ## Heading 2
