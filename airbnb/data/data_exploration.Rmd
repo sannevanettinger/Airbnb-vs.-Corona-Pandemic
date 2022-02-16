@@ -29,7 +29,7 @@ The data is downloaded from insideairbnb.com and provides detailed listings data
 ### Preparing the data
 Since the data is split up into 4 raw data files, and need to be merged for the whole research project, these raw data files need preparation before merging.
 
-```{r importing 4 raw csv data files, message=FALSE, include=FALSE}
+```{r importing 4 raw csv data files, message=FALSE, warning=FALSE, include=FALSE}
 # importing the 4 raw data files
 listings_london_qrt4 <- read_csv("http://data.insideairbnb.com/united-kingdom/england/london/2021-12-07/data/listings.csv.gz")
 listings_london_qrt3 <- read_csv("http://data.insideairbnb.com/united-kingdom/england/london/2021-09-09/data/listings.csv.gz")
@@ -41,7 +41,7 @@ listings_london_qrt1 <- read_csv("http://data.insideairbnb.com/united-kingdom/en
 #### Creating a new variable: quarter
 To distinguish the different raw data files in the merged data file, a new variable is created: quarter. This variable indicates the original data file by a number (1, 2, 3 or 4).  
 
-```{r creating new variable: quarter}
+```{r creating new variable: quarter, message=FALSE}
 # creating a new variable: quarter. This indicates the original data file (1, 2, 3, 4)
 
 listings_london_qrt1$quarter <- c(1)
@@ -65,18 +65,21 @@ listings_london_qrt4 <- listings_london_qrt4 %>%
 Merge all the 4 data files into 1 data file to get started with the data exploration.
 **How can this be combined into 1 piece of code?**
 
-```{r merging the 4 data files into 1 data file}
+```{r merging the 4 data files into 1 data file, message=FALSE, warning=FALSE, include=FALSE}
 # Merging the 4 data files into 1 data file.
 listings_london <- rbind(listings_london_qrt1,
             listings_london_qrt2,
             listings_london_qrt3,
             listings_london_qrt4)
+```
 
+```{r rearranging the order of the rows, echo=TRUE}
 # Rearranging the order of the rows. 
 listings_london <- listings_london %>% 
   arrange(id, quarter)
 
-View(listings_london)
+# Take a look at the new dataset
+head(listings_london)
 ```
 
 ### Research
@@ -103,7 +106,7 @@ Before moving on to exploring the data, the idea of the research is provided onc
 
 This summary provides an insight into the raw data files that has been imported. We can check what the column names of the variables are, if the variables have the right class and check whether there are missing values in the dataset. 
 
-```{r summary of whole dataset message=FALSE}
+```{r summary of whole dataset, message=FALSE}
 summary(listings_london)
 ```
 
@@ -120,7 +123,7 @@ To come back to our variables, we can now assign the column names to the variabl
 
 As you can see in the summary, the variable price is imported as a character. This has to be changed to a numeric variable.
 
-```{r change price variable, include=FALSE}
+```{r change price variable, warning=FALSE}
 # remove the dollar sign and commas (for prices above thousand)
 listings_london$price <- gsub('[$,]', '', listings_london$price)
 
@@ -140,11 +143,20 @@ class(listings_london$price)
 
 Looking into the (in)dependent variables of our research project to get a feel for the dataset.
 
-```{r summaries of the independent variables}
+```{r summaries of the independent variables, echo=TRUE}
+# summary of the price variable
 summary(listings_london$price)
+
+# summary of the rating score
 summary(listings_london$review_scores_rating)
+
+# summary of the number of bookings
 summary(listings_london$host_listings_count)
+
+# table of the number of rooms per neighbourhood
 table(listings_london$neighbourhood_cleansed)
+
+# table of the number of room types
 table(listings_london$room_type)
 ```
 
