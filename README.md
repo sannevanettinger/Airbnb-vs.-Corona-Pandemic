@@ -9,6 +9,7 @@ This research benefits three stakeholders:
   * Potential Airbnb hosts
   * Current Airbnb hosts looking to expand their supply 
   * Airbnb itself.  
+
 The former can gain insight into their preferred city to what type of room they can most effectively offer and in which neighborhood. In so doing, they can best match the changes from the Corona Pandemic to the needs of the traveler. Airbnb can gain insight into supply and demand, adjust to it in whatever way it can, and also advertise more optimally on its website and app.  
 
 Finally, the team decided to compare the beginning of 2021 with the end of 2021. Whereas for many countries the Corona Pandemic played a huge role in daily life at the beginning of 2021, this was much less the case at the end of 2021. For example, the relaxation of strict measures in the United Kingdom from July 18, 2021 (Gutiérrez, P., Duncan, P., Kirk, A., Robyn, M., McIntyre, N., Thomas, T., Blights, G., 2021). Due to limitations in the dataset, it is not possible for this research to compare different years.  
