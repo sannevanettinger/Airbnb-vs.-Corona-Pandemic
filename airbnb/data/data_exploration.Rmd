@@ -162,3 +162,4 @@ List of things that needs to be done:
 - Deal with the missing values of the key variables in our project.
 - Changing the measurement scale of the rating score variable.
 - Deleting (?) the columns that we do not need.
+- Visualizing using plots
