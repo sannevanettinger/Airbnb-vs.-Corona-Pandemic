@@ -1,4 +1,4 @@
-# Airbnb vs. The Corona Pandemic: Who benefited?
+# Airbnb vs. The Corona Pandemic: Who won?
 
 ## Research motivation
 It seems obvious that the Corona Pandemic, which finally seems to be coming to an end, has had the result of strongly reduced travel and overnight stays. Both locally and nationally. However, nothing could be further from the truth. There are certainly Airbnb hosts who have benefited from the Corona Pandemic. This project focusses mainly on the following research question: "*Which types of rooms in which neighborhoods benefited the most from the Corona Pandemic in London, United Kingdom?*" However, later on the content of this project can be used for research on this topic for any other city. This research will be assessed based on three elements: (1) _**the number of listings**_, (2) _**the score of the reviews**_ and/or (3) _**price increases**_. To concretize the research, the different (1) _**room types**_ and (2) _**neighborhoods**_ are considered.  
