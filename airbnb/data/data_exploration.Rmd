@@ -66,6 +66,13 @@ listings_london_qrt4 <- listings_london_qrt4 %>%
 
 ```
 
+
+```{r}
+# First standardize the variables before merging
+
+
+```
+
 #### Merging the 4 data files into 1 data file
 Merge all the 4 data files into 1 data file to get started with the data exploration.
 **How can this be combined into 1 piece of code?**
@@ -91,20 +98,20 @@ head(listings_london)
 
 Before moving on to exploring the data, the idea of the research is provided once again: 
 
-**Research question**: Which types of rooms in which neighborhoods benefitted the most from the Corona Pandemic in London, United Kingdom?
+**Research question**: Which types of rooms in which neighborhoods benefited the most from the Corona Pandemic in London, United Kingdom?
 
 ***Variables***:
 
-*Neighbourhoods (31)*
+*Neighborhoods (31)*
 
 - Rating score
-- Number of bookings
+- Number of listings
 - Price increase
 
 *Room Types (4)*
 
 - Rating score
-- Number of bookings
+- Number of listings
 - Price increase
 
 ### Let's take a look at the data
@@ -159,7 +166,7 @@ summary(listings_london$price)
 # summary of the rating score
 summary(listings_london$review_scores_rating)
 
-# summary of the number of bookings
+# summary of the number of listings
 summary(listings_london$host_listings_count)
 
 # table of the number of rooms per neighbourhood
@@ -168,6 +175,11 @@ table(listings_london$neighbourhood_cleansed)
 # table of the number of room types
 table(listings_london$room_type)
 ```
+
+```{r}
+# Detecting outliers
+```
+
 
 The rating score variable has a lot of missing values (NA's), 85.842 missing in total. Since this is an important variable in the research project, it has to be dealt with. **How?**
 The rating score is also measured in two different ways, namely on a 0-100 (quarter 1) scale and 0-5 (quarter 2-4) scale. Because of this, the mean score on this variable can not be measured and has to be changed. Either to the 0-100 scale or the 0-5 scale. 
