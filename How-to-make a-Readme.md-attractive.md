@@ -89,8 +89,7 @@ Content Cell  | Content Cell | Content Cell
 ----
 
 ## 6. Adding images to your Readme.md file
-Upload your image in a special folder at the repositiry, and then link the filename like this:  
--![Screenshot](docs/images/screenshot.png)-
+![alt tag](url/to/image.png)  
 
 ----
 
