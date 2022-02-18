@@ -10,7 +10,7 @@ This research benefits three stakeholders: (1) potential Airbnb hosts, (2) curre
 Finally, the team decided to compare data of the beginning of 2021 with the end of 2021. Whereas for many countries the Corona Pandemic played a huge role in daily life at the beginning of 2021, this was much less the case at the end of 2021. For example, the relaxation of strict measures in the United Kingdom from July 18, 2021 (Gutiérrez, P., Duncan, P., Kirk, A., Robyn, M., McIntyre, N., Thomas, T., Blights, G., 2021). The figure below gives extra details on how the United Kingdom loosend their Corona measures in 2021 towards a normal situation like the situation before Corona ever happend.  
 
 ![Timeline-of-UK-government-cornavirus-lockdown-and-measures-2021](https://user-images.githubusercontent.com/89737678/154754883-9f6c9a0a-2b67-49fa-ae82-bbfda4ac0af7.PNG)  
-Figure 1: Timeline Corona Lockdown And Measures In The United Kingdom   
+Figure 1: Timeline Corona Lockdown And Measures In The United Kingdom (Institute Of Government, 2022)   
   
 ## Research method
 As mentioned above, this research will focus on the conbinations of room types and neighborhoods in London, United Kingdom. To be more precise 124 different room types-neighborhood combinations. The number of bookings, the score of the reviews and price increases will be used as explanatory variables in this research. Since the dependent variable in this research (124 room types-neighborhood combinations in London, United Kingdom) is a nominal variable, and the independent variables (number of listings, rating score, price) are metric variables, the method used in the research will be *Logistic Analysis*.
