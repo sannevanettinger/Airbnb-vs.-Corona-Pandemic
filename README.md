@@ -19,4 +19,4 @@ As mentioned above, this research will focus on the conbinations of room types a
 
 Literature:  
 * Gutiérrez, P., Duncan, P., Kirk, A., Robyn, M., McIntyre, N., Thomas, T., Blights, G. (2021). *Covid: how has the pandemic changed in the UK in 2021?* [Article] Retrieved from: https://www.theguardian.com/world/ng-interactive/2021/dec/22/covid-how-has-the-pandemic-changed-in-the-uk-in-2021 
-* Institute Of Government (2022). *Overview on the Corona Measures in the UK* Retrieved from: https://www.instituteforgovernment.org.uk/charts/uk-government-coronavirus-lockdowns
+* Institute Of Government (2022). *Timeline of UK goverment coronavirus lockdown and measures 2021*. Retrieved from: https://www.instituteforgovernment.org.uk/charts/uk-government-coronavirus-lockdowns
