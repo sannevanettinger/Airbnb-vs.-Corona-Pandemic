@@ -11,7 +11,7 @@ Finally, the team decided to compare data of the beginning of 2021 with the end 
 
 ![Timeline-of-UK-government-cornavirus-lockdown-and-measures-2021](https://user-images.githubusercontent.com/89737678/154754883-9f6c9a0a-2b67-49fa-ae82-bbfda4ac0af7.PNG)  
 **Figure 1: Timeline Corona Lockdown And Measures In The United Kingdom**  
-
+  
 
 ## Research method
 As mentioned above, this research will focus on the conbinations of room types and neighborhoods in London, United Kingdom. To be more precise 124 different room types-neighborhood combinations. The number of bookings, the score of the reviews and price increases will be used as explanatory variables in this research. Since the dependent variable in this research (124 room types-neighborhood combinations in London, United Kingdom) is a nominal variable, and the independent variables (number of listings, rating score, price) are metric variables, the method used in the research will be *Logistic Analysis*.
