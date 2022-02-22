@@ -73,6 +73,14 @@ listings_london_qrt1 <- read_csv("http://data.insideairbnb.com/united-kingdom/en
 
 ```
 
+
+
+```{r}
+# First Scaling the variables before merging
+
+```
+
+
 #### Creating a new variable: quarter
 To distinguish the different raw data files in the merged data file, a new variable is created: quarter. This variable indicates the original data file by a number (1, 2, 3 or 4).  
 
@@ -83,49 +91,6 @@ listings_london_qrt1$quarter <- c(1)
 listings_london_qrt2$quarter <- c(2)
 listings_london_qrt3$quarter <- c(3)
 listings_london_qrt4$quarter <- c(4)
-
-# rearranging the order of the columns in such a way that quarter is the second column
-listings_london_qrt1 <- listings_london_qrt1 %>% 
-  select(id, quarter, listing_url:reviews_per_month)
-listings_london_qrt2 <- listings_london_qrt2 %>% 
-  select(id, quarter, listing_url:reviews_per_month)
-listings_london_qrt3 <- listings_london_qrt3 %>% 
-  select(id, quarter, listing_url:reviews_per_month)
-listings_london_qrt4 <- listings_london_qrt4 %>% 
-  select(id, quarter, listing_url:reviews_per_month)
-
-```
-
-
-```{r}
-# First standardize the variables before merging
-
-library(caret)
-# Assuming goal class is column 10
-
-library(tidyr)
-listings_london_qrt2 %>% drop_na(review_scores_rating)
-
-preObj <- preProcess(listings_london_qrt1[62], method=c("center", "scale" ), na.rm = TRUE)
-newData <- predict(preObj, listings_london_qrt1[62])
-
-summary(listings_london_qrt2)
-preObj_2 <- preProcess(listings_london_qrt2[62], method=c("center", "scale"))
-newData_2 <- predict(preObj_2, listings_london_qrt2[62])
-
-listings_london_qrt1$reviews_standardized <- newData
-listings_london_qrt2$reviews_standardized <- newData_2
-
-
-listings_london_qrt1[62]
-listings_london_qrt1[76]
-summary(listings_london_qrt2$review_scores_rating)
-summary(listings_london_qrt1$reviews_standardized)
-summary(listings_london_qrt2$reviews_standardized)
-
-
-summary()
-```
 ```
 
 #### Merging the 4 data files into 1 data file
@@ -141,6 +106,23 @@ listings_london <- rbind(listings_london_qrt1,
 ```
 
 ```{r rearranging the order of the rows, echo=TRUE}
+
+# rearranging the order of the columns in such a way that quarter is the second column
+listings_london <- listings_london %>% 
+  select(id, quarter, listing_url:reviews_per_month)
+
+
+# Rearranging the order of the rows. 
+listings_london <- listings_london %>% 
+  arrange(id, quarter)
+
+
+# Take a look at the new dataset
+head(listings_london)
+
+```
+
+```{r rearranging the order of the rows, echo=TRUE}
 # Rearranging the order of the rows. 
 listings_london <- listings_london %>% 
   arrange(id, quarter)
@@ -148,6 +130,7 @@ listings_london <- listings_london %>%
 # Take a look at the new dataset
 head(listings_london)
 ```
+
 
 ### Research
 
@@ -207,6 +190,12 @@ class(listings_london$price)
 # How to deal with the missing values? Just delete them or what is the idea?
 
 # discuss tomorrow. It may be that there is a underlying construct on why people did not made a review. So I would not delete them. 
+
+```
+
+
+```{r}
+Remove columns that we don't need
 
 ```
 
