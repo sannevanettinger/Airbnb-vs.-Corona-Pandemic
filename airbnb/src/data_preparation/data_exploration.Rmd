@@ -17,11 +17,13 @@ install.packages("dplyr")
 install.packages("tidyverse")
 install.packages("ggplot2")
 install.packages("readr")
+install.packages("googledrive")
 library(plyr)
 library(dplyr)
 library(tidyverse)
 library(ggplot2)
 library(readr)
+library(googledrive)
 # more to come ...
 ```
 
@@ -34,7 +36,34 @@ The data is downloaded from insideairbnb.com and provides detailed listings data
 ### Preparing the data
 Since the data is split up into 4 raw data files, and need to be merged for the whole research project, these raw data files need to be prepared before merging.
 
-```{r importing 4 raw csv data files, message=FALSE, warning=FALSE, include=FALSE}
+```{r importing multiple datasets from Google Drive, message=FALSE, warning=FALSE}
+# importing the multiple datasets from the Google Drive
+
+data_id <- "1AzdybwMX-2QRfcolBv-2xT-5XKUeQpRhLBXtH1n47qM"
+drive_download(as_id(data_id), path = "out_file.csv", overwrite = TRUE)
+df <- read.csv("out_file.csv")
+
+urls <- as.character(df$link)
+
+datasets <- lapply(urls, function(url) {
+  print(paste0("Now downloading ... ", url))
+  city = tolower(as.character(df$city[match(url, df$link)]))
+  
+  res = read.csv(url)
+  res$city <- city
+  return(res)
+})
+
+combined_data = do.call('rbind', datasets)
+
+```
+
+```{r export raw data file to Excel/CSV}
+
+```
+
+
+```{r importing 4 raw csv data files (old version), message=FALSE, warning=FALSE, include=FALSE}
 # importing the 4 raw data files
 listings_london_qrt4 <- read_csv("http://data.insideairbnb.com/united-kingdom/england/london/2021-12-07/data/listings.csv.gz")
 listings_london_qrt3 <- read_csv("http://data.insideairbnb.com/united-kingdom/england/london/2021-09-09/data/listings.csv.gz")
