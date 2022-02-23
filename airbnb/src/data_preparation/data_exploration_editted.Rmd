@@ -7,9 +7,9 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
-	echo = TRUE,
 	message = FALSE,
-	warning = FALSE
+	warning = FALSE,
+	include = FALSE
 )
 # loading packages
 install.packages("plyr")
@@ -19,12 +19,17 @@ install.packages("ggplot2")
 install.packages("readr")
 install.packages("googledrive")
 install.packages("caret")
+install.packages("data.table")
+install.packages("R.utils")
 library(plyr)
 library(dplyr)
 library(tidyverse)
 library(ggplot2)
 library(readr)
 library(googledrive)
+library(caret)
+library(data.table)
+library(R.utils)
 # more to come ...
 ```
 
@@ -41,25 +46,30 @@ Since the data is split up into 4 raw data files, and need to be merged for the 
 # importing the multiple datasets from the Google Drive
 
 data_id <- "1AzdybwMX-2QRfcolBv-2xT-5XKUeQpRhLBXtH1n47qM"
-drive_download(as_id(data_id), path = "out_file.csv", overwrite = TRUE)
-df <- read.csv("out_file.csv")
+drive_download(as_id(data_id), path = "listings_uk.csv", overwrite = TRUE)
+df_drive <- read.csv("listings_uk.csv")
 
-urls <- as.character(df$link)
+urls <- as.character(df_drive$link)
 
-datasets <- lapply(urls, function(url) {
+listings_uk <- lapply(urls, function(url) {
   print(paste0("Now downloading ... ", url))
-  city = tolower(as.character(df$city[match(url, df$link)]))
+  city = tolower(as.character(df_drive$city[match(url, df_drive$link)]))
   
-  res = read.csv(url)
+  res = fread(url)
   res$city <- city
   return(res)
 })
 
-combined_data = do.call('rbind', datasets)
+combined_data_uk = do.call('rbind', listings_uk)
 
 ```
 
 ```{r export raw data file to Excel/CSV}
+# exporting the raw data file (combined_data_uk) to a CSV file
+
+write.csv(combined_data_uk, 'combined_data_uk.csv', row.names=F)
+
+# this does the trick, however it does not store the file in the data folder. 
 
 ```
 
