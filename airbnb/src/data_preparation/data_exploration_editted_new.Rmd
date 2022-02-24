@@ -94,7 +94,6 @@ df %>% mutate(data_uk$new_col = ifelse(data_uk$Max_qrt1>5, old_value/20, old_val
 
 ```
 
-
 #### Creating a new variable: quarter
 To distinguish the different raw data files in the merged data file, a new variable is created: quarter. This variable indicates the original data file by a number (1, 2, 3 or 4).  
 
