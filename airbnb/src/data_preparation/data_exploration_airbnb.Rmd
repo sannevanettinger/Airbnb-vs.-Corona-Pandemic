@@ -1,0 +1,206 @@
+---
+title: "Data exploration file of Airbnb in the United Kingdom"
+authors: "Team 2: Sanne van Ettinger, Claudia Berkhof, Demi van de Pol, Jurg Jacobs, Rob van der Wielen"
+date: "2/25/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	message = FALSE,
+	warning = FALSE,
+	include = FALSE)
+```
+
+## Data Exploration
+This document contains the code to programmatically download the raw data files from the InsideAirbnb website (insideairbnb.com). Besides that, information on the content of the raw data files and  variable definitions are provided. This RMarkdown document provides you with the codes to download the detailed listings data from AirBnB of the United Kingdom. Since the original data of 2021 is available in four different data files, divided per quarter, this document contains instructions on how to download and merge the four raw data files into one complete dataset for AirBnB data regarding to the United Kingdom. 
+
+### Getting started
+To download and eventually merge the different datasets you will first need to install and load the following packages in RStudio.
+
+```{r Installing packages, include=FALSE}
+# Install packages
+install.packages("plyr")
+install.packages("dplyr")
+install.packages("tidyverse")
+install.packages("ggplot2")
+install.packages("readr")
+install.packages("googledrive")
+install.packages("caret")
+install.packages("data.table")
+install.packages("R.utils")
+install.packages("dint")
+install.packages("zoo")
+```
+
+```{r Loading packages, include=FALSE}
+# Loading packages
+library(plyr)
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(readr)
+library(googledrive)
+library(caret)
+library(data.table)
+library(R.utils)
+```
+
+### Downloading the data from insideairbnb.com & merging it into one dataset
+The code snippet below will tell you exactly how to download the data files of cities in the United Kingdom from InsideAirbnb. InsideAirbnb offers datasets from three cities in the United Kingdom: London (containing 4 quarters), Great Manchester (containing 4 quarters) and Bristol (containing 3 quarters). The needed URL's, in total 11, are collected in a Google Drive that is publically available via this link: https://docs.google.com/spreadsheets/d/1AzdybwMX-2QRfcolBv-2xT-5XKUeQpRhLBXtH1n47qM/. Besides downloading the data files, the code snippet below also directly binds the different datasets into one dataset.
+
+```{r Download data from InsideAirbnb via Google Drive and merge it into one dataset, message=FALSE, warning=FALSE}
+# importing the datasets from the Google Drive
+data_id <- "1AzdybwMX-2QRfcolBv-2xT-5XKUeQpRhLBXtH1n47qM"  
+drive_download(as_id(data_id), path = "listings_uk.csv", overwrite = TRUE)
+df_drive <- read.csv("listings_uk.csv")
+
+urls <- as.character(df_drive$link)
+
+listings_uk <- lapply(urls, function(url) {
+  print(paste0("Now downloading ... ", url))
+  city = tolower(as.character(df_drive$city[match(url, df_drive$link)]))
+  
+  res = fread(url)
+  res$city <- city
+  return(res)
+})
+
+# merging the datasets into one dataset
+data_airbnb_uk = do.call('rbind', listings_uk)
+```
+
+Now that the dataset is created, we want to save the raw data as an CSV file and store it in the data folder of this project on GitHub. This can be done by running the following code snippet:
+
+```{r Export raw data file to CSV file}
+# exporting the raw data file (data_uk) to a CSV file
+write.csv(data_airbnb_uk, 'data_airbnb_uk.csv', row.names=F)
+
+# saving raw data file in data folder
+
+```
+
+------
+Note: Find out how to save the raw data into the data folder GitHub. Might ask Hannes??
+------
+
+
+### Solving 'issues' in the dataset (1)
+As the data of 2021 is collected per quarter, and the purpose of this research is to compare different time periods, several new variables named "quarter", "year" and "year_quarter" should be created. By doing this, a distinction can be made between the different periods in time. Obviously, it is more orderly to have the newly created variables relocated after the variable "last_scraped" as the values from the variables "quarter", "year" and "year_quarter" are derived from this variable. All this can be done using the code snippet below.
+
+```{r Create new variables: quarter, year, year_quarter}
+# creating new variables
+library("dint")
+data_airbnb_uk$quarter <- get_quarter(data_airbnb_uk$last_scraped)
+data_airbnb_uk$year <- get_year(data_airbnb_uk$last_scraped)
+
+library("zoo")
+data_airbnb_uk$year_quarter <- as.yearqtr(data_airbnb_uk$last_scraped, format="%Y-%m-%d")
+data_airbnb_uk$year_quarter <- format(data_airbnb_uk$year_quarter, format = "%Y-%q")
+
+# rearranging the order in the dataset
+data_airbnb_uk <- data_airbnb_uk %>%
+  relocate(quarter, .after = last_scraped) %>% 
+  relocate(year, .after = quarter) %>% 
+  relocate(year_quarter, .after = year)
+```
+
+------
+Note Demi: Create new variable, name = quarter. 
+------
+
+------
+Note: Maybe the following content should be in a second RMarkdown document as from here the cleaning part begins??
+------
+
+### Deleting unnecessary columns
+As this research focuses on the main question "Which types of rooms in which neighborhoods benefited the most from the Corona Pandemic in the United Kingdom?", some variables in the original dataset might not be needed to come to an answer. For that reason only the following variables are kept in the dataset to maintain a clear overview of the variables needed for this research:
+* city
+* quarter
+* year
+* quarter_year
+* neighborhood_cleansed
+* room_type
+* calculated_host_listings_count **OR** host_listings_count
+* review_scores_rating
+* price  
+
+The code below will copy the variables mentioned above into a new dataset, which then can be used to do analyses. 
+
+```{r Delete unnecessary columns}
+
+```
+
+------
+Note Claudia: Create new dataset with the needed variables, those mentioned above, name dataset = data_airbnb_uk_cleaned_1. Also might give a short description of what the variables are. 
+------
+Note: Decide which one to keep as there is a big difference between "calculated_host_listings_count" and "host_listings_count". "calculated_host_listings_count" being how many room (sometimes multiple type of rooms) a host offers. "host_listings_count" being ??
+------
+
+
+Now that the variables of interest are captured in a dataset let's take a look at the data by executing a summary to get a feeling for the data and see if we can add some meaning to the variables. 
+
+```{r}
+summary()
+```
+
+
+
+### Solving 'issues' in the dataset (2)
+#### Rescaling the variable "review_scores_rating"
+From the results of the summary above can be observed that we have to take a closer look at the variable "review_scores_rating" as the range of this variable seems a bit out of proportion. As we inspect the data it becomes clear that the range of this variables has changed over time. In quarter 1 of 2021 the variable "review_scores_rating" ranges between 0 and 100. However, in the following quarters (2, 3 and 4) the variable "review_scores_rating" ranges between 0 and 5. This will lead to problems while analyzing the data. Therefore this needs to be taken care off by rescaling the variable. Below you will find the code to do so.
+
+```{r Rescale the variable: review_scores_rating}
+
+```
+
+------
+Note Sanne: Create new rescaled variable, name = review_scores_rating_rescaled, here use the dataset: data_airbnb_uk_cleaned_1.
+------
+
+#### Changing the variable "price"
+Another 'issue' can be found looking at the variable "price". As you may have noticed in the summary,  the variable "price" in this data is imported as a character. This has to be changed to a numeric variables to include the variable "price" in any further analyses. Therefore the following code will remove the dollar sign. Also commas for prices above thousand are removed. Next the variables is changed from character to numeric. 
+
+```{r Change the variable: price}
+# Remove the dollar sign and commas (for prices above thousand)
+data_airbnb_uk_cleaned_1$price <- gsub('[$,]', '', data_airbnb_uk_cleaned_1$price)
+
+# Changing price variable from character to numeric
+data_airbnb_uk_cleaned_1$price <- as.numeric(data_airbnb_uk_cleaned_1$price)
+
+# Check for the results
+class(data_airbnb_uk_cleaned_1$price)
+```
+
+------
+Note: Rewrite the code with updated names, here use the dataset: data_airbnb_uk_cleaned_1.(ALREADY REWRITTEN, JUST CHECK IF ALL GOES WELL RUNNING IT)
+------
+
+#### Removing NA's
+As seen in the statistics of the summary of the data a lot of data is missing from the variable "review_scores_rating". The missing data can have several reasons as for example technical issues. For the analyses later it is better to remove the observations with these so called NA's as these can bias the results of the analyses. The code snippet below removes the observations with the NA's and creates a new dataset. 
+
+```{r Remove NA's}
+
+```
+
+------
+Note Rob: Create new dataset without the NA's, name = data_airbnb_uk_cleaned_2.
+------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
