@@ -115,26 +115,27 @@ Note: Maybe the following content should be in a second RMarkdown document as fr
 
 ### Deleting unnecessary columns
 As this research focuses on the main question "Which types of rooms in which neighborhoods benefited the most from the Corona Pandemic in the United Kingdom?", some variables in the original dataset might not be needed to come to an answer. For that reason only the following variables are kept in the dataset to maintain a clear overview of the variables needed for this research:
-* city
-* quarter
-* year
-* quarter_year
-* neighborhood_cleansed
-* room_type
-* calculated_host_listings_count **OR** host_listings_count
-* review_scores_rating
-* price  
+* id: Airbnb's unique identifier for the listing
+*city: The city in which the Airbnb is located 
+* quarter: The quarter in which the Airbnb is listed
+* year: The year in which the Airbnb is listed 
+* year_quarter: The year and quarter in which in the Airbnb is listed  
+* neighborhood_cleansed: The neigborhood in which the Airbnb is located 
+* room_type: The type of room the Airbnb offers 
+* calculated_host_listings_count: The number of listings the host has in the current scrape, in the city / region geography 
+* host_listings_count: The number of listings the host has (per Airbnb calculations)
+* review_scores_rating: The overall rating of the Airbnb based on the review scores 
+* price: The price at which the Airbnb is listed 
 
 The code below will copy the variables mentioned above into a new dataset, which then can be used to do analyses. 
 
 ```{r Delete unnecessary columns}
-
+data_airbnb_uk_cleaned_1 <- data_airbnb_uk %>% select(id, city, quarter, year, year_quarter, neighbourhood_cleansed, room_type, calculated_host_listings_count, review_scores_rating, price)
 ```
 
 ------
-Note Claudia: Create new dataset with the needed variables, those mentioned above, name dataset = data_airbnb_uk_cleaned_1. Also might give a short description of what the variables are. 
-------
-Note: Decide which one to keep as there is a big difference between "calculated_host_listings_count" and "host_listings_count". "calculated_host_listings_count" being how many room (sometimes multiple type of rooms) a host offers. "host_listings_count" being ??
+Note Demi: Decide which one to keep as there is a big difference between "calculated_host_listings_count" and "host_listings_count"
+Claudia: Based on the meaning of the two variables (see above),  I think it is best to keep "calculated_host_listings_count", as we are only interested in our current city. However, tell me if you guys think otherwise
 ------
 
 
