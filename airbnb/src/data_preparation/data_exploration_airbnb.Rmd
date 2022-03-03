@@ -180,8 +180,106 @@ Note: Rewrite the code with updated names, here use the dataset: data_airbnb_uk_
 #### Removing NA's
 As seen in the statistics of the summary of the data a lot of data is missing from the variable "review_scores_rating". The missing data can have several reasons as for example technical issues. For the analyses later it is better to remove the observations with these so called NA's as these can bias the results of the analyses. The code snippet below removes the observations with the NA's and creates a new dataset. 
 
+Almost all the missing value's (in the variables that we will use in our analysis) are in the rating score variable. About 90,000 missing values. The host listing_count has around 2,000 missing values, but that is a relative small number when having more than 300,000 observations. 
+
+
 ```{r Remove NA's}
 
+# First a dataset is created with the variables with only the oberservations that have NA's for the review score for comparrison. 
+data_airbnb_uk_na <- data_airbnb_uk[is.na(data_airbnb_uk$review_scores_rating),]
+
+# host is super_host
+data_airbnb_uk %>%
+  count(host_is_superhost)
+
+data_airbnb_uk_na %>%
+  count(host_is_superhost)
+
+
+# Remove the dollar sign and commas (for prices above thousand)
+data_airbnb_uk$price <- gsub('[$,]', '', data_airbnb_uk$price)
+
+# Changing price variable from character to numeric
+data_airbnb_uk$price <- as.numeric(data_airbnb_uk$price)
+
+# Check for the results
+class(data_airbnb_uk$price)
+
+# Remove the dollar sign and commas (for prices above thousand)
+data_airbnb_uk_na$price <- gsub('[$,]', '', data_airbnb_uk_na$price)
+
+# Changing price variable from character to numeric
+data_airbnb_uk_na$price <- as.numeric(data_airbnb_uk_na$price)
+
+# Check for the results
+class(data_airbnb_uk_na$price)
+
+
+# price
+data_airbnb_uk %>%
+summarize(mean(price))
+
+data_airbnb_uk_na %>%
+summarize(mean(price))
+
+# host since 
+data_host <- data_airbnb_uk %>%
+  count(host_since)
+
+data_host_na <- data_airbnb_uk_na %>%
+  count(host_since)
+
+
+# plot the data using ggplot
+ggplot(data = data_host, aes(x = host_since, y = n)) +
+  geom_point() +
+  labs(x = "Date",
+    y = "Total number of hosts",
+    title = "Precipitation Data",
+    subtitle = "Boulder, Colorado 2013")
+
+
+# plot the data using ggplot
+ggplot(data = data_host, aes(x = host_since, y = n)) +
+  geom_bar(stat = "identity", fill = "purple") +
+  labs(title = "Date of becoming a host",
+              x = "Date", y = "Number of host")
+
+# plot the data using ggplot
+ggplot(data = data_host_na, aes(x = host_since, y = n)) +
+  geom_bar(stat = "identity", fill = "purple") +
+  labs(title = "Date of becoming a host",
+              x = "Date", y = "Number of host")
+
+
+# also for year
+dates_na <- as.POSIXct(data_host_na$host_since, format="%Y-%m-%d")
+dates_2_na <- format(dates_na, format="%Y")
+dates_2_na <- as.data.frame(dates_2_na)
+
+data_host_na$year <- dates_2_na$dates
+
+# plot the data using ggplot
+ggplot(data = data_host_na, aes(x = year, y = n)) +
+  geom_bar(stat = "identity", fill = "purple") +
+  labs(title = "Date of becoming a host in years for the na dataset",
+              x = "year", y = "Number of host")
+
+
+
+
+# also for year
+dates <- as.POSIXct(data_host$host_since, format="%Y-%m-%d")
+dates_2 <- format(dates, format="%Y")
+dates_2 <- as.data.frame(dates_2)
+
+data_host$year <- dates_2$dates
+
+# plot the data using ggplot
+ggplot(data = data_host, aes(x = year, y = n)) +
+  geom_bar(stat = "identity", fill = "purple") +
+  labs(title = "Date of becoming a host in years",
+              x = "year", y = "Number of host")
 ```
 
 ------
