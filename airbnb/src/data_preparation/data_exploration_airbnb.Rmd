@@ -124,8 +124,12 @@ As this research focuses on the main question "Which types of rooms in which nei
 * room_type: The type of room the Airbnb offers 
 * calculated_host_listings_count: The number of listings the host has in the current scrape, in the city / region geography 
 * host_listings_count: The number of listings the host has (per Airbnb calculations)
-* review_scores_rating: The overall rating of the Airbnb based on the review scores 
+* review_scores_rating: The overall rating of the Airbnb based on the review scores on a 0 to 5 scale
 * price: The price at which the Airbnb is listed 
+
+-----
+Note Sanne: Later on, we add the variable review_scores_rating_rescaled. Should we also mention this one in the list above? Or do we choose - to keep it orderly - to change the review_scores_rating directly into the right 0-5 scale instead of making a new variable? That is also necessary to determine before we remove NA's. 
+-----
 
 The code below will copy the variables mentioned above into a new dataset, which then can be used to do analyses. 
 
@@ -153,11 +157,10 @@ From the results of the summary above can be observed that we have to take a clo
 
 ```{r Rescale the variable: review_scores_rating}
 
+data_airbnb_uk_cleaned_1 <- data_airbnb_uk_cleaned_1 %>% mutate(review_scores_rating_rescaled = ifelse(review_scores_rating>5,review_scores_rating/20, review_scores_rating))
+         
 ```
 
-------
-Note Sanne: Create new rescaled variable, name = review_scores_rating_rescaled, here use the dataset: data_airbnb_uk_cleaned_1.
-------
 
 #### Changing the variable "price"
 Another 'issue' can be found looking at the variable "price". As you may have noticed in the summary,  the variable "price" in this data is imported as a character. This has to be changed to a numeric variables to include the variable "price" in any further analyses. Therefore the following code will remove the dollar sign. Also commas for prices above thousand are removed. Next the variables is changed from character to numeric. 
@@ -185,7 +188,7 @@ Almost all the missing value's (in the variables that we will use in our analysi
 
 ```{r Remove NA's}
 
-# First a dataset is created with the variables with only the oberservations that have NA's for the review score for comparrison. 
+# First a dataset is created with the variables with only the oberservations that have NA's for the review score for comparison. 
 data_airbnb_uk_na <- data_airbnb_uk[is.na(data_airbnb_uk$review_scores_rating),]
 
 # host is super_host
@@ -213,7 +216,6 @@ data_airbnb_uk_na$price <- as.numeric(data_airbnb_uk_na$price)
 
 # Check for the results
 class(data_airbnb_uk_na$price)
-
 
 # price
 data_airbnb_uk %>%
