@@ -186,11 +186,13 @@ As seen in the statistics of the summary of the data a lot of data is missing fr
 Almost all the missing value's (in the variables that we will use in our analysis) are in the rating score variable. About 90,000 missing values. The host listing_count has around 2,000 missing values, but that is a relative small number when having more than 300,000 observations. 
 
 
+
 ```{r Remove NA's}
 
 # First a dataset is created with the variables with only the oberservations that have NA's for the review score for comparison. 
 data_airbnb_uk_na <- data_airbnb_uk[is.na(data_airbnb_uk$review_scores_rating),]
 
+# Here are some interesting findings when comparing the data
 # host is super_host
 data_airbnb_uk %>%
   count(host_is_superhost)
@@ -198,7 +200,10 @@ data_airbnb_uk %>%
 data_airbnb_uk_na %>%
   count(host_is_superhost)
 
+# for the dataset with na's only 3,8% is a  superhost and for the dataset without the na's it is 14%
 
+
+# For these datasets the price also needs to be converted. 
 # Remove the dollar sign and commas (for prices above thousand)
 data_airbnb_uk$price <- gsub('[$,]', '', data_airbnb_uk$price)
 
@@ -224,7 +229,12 @@ summarize(mean(price))
 data_airbnb_uk_na %>%
 summarize(mean(price))
 
-# host since 
+
+# Another reason that some listings have no reviews can be that the properties are new on Airbnb. 
+
+# unfortunately there is no date for when the listing first appeared on Airbnb. But there is a date for when the host first appeared on Airbnb. So we will look at this variable. We will do this via plotting the data
+
+# first extract how many times each data occurs in both the dataset without na's and the dataset with na's, 
 data_host <- data_airbnb_uk %>%
   count(host_since)
 
@@ -232,58 +242,67 @@ data_host_na <- data_airbnb_uk_na %>%
   count(host_since)
 
 
-# plot the data using ggplot
-ggplot(data = data_host, aes(x = host_since, y = n)) +
-  geom_point() +
-  labs(x = "Date",
-    y = "Total number of hosts",
-    title = "Precipitation Data",
-    subtitle = "Boulder, Colorado 2013")
+# Then plot the data using ggplot
 
 
-# plot the data using ggplot
+# plot the data for the dataset without na's using ggplot
 ggplot(data = data_host, aes(x = host_since, y = n)) +
   geom_bar(stat = "identity", fill = "purple") +
   labs(title = "Date of becoming a host",
               x = "Date", y = "Number of host")
 
-# plot the data using ggplot
+# plot the data for the dataset with na's using ggplot
 ggplot(data = data_host_na, aes(x = host_since, y = n)) +
   geom_bar(stat = "identity", fill = "purple") +
   labs(title = "Date of becoming a host",
               x = "Date", y = "Number of host")
 
-
-# also for year
-dates_na <- as.POSIXct(data_host_na$host_since, format="%Y-%m-%d")
-dates_2_na <- format(dates_na, format="%Y")
-dates_2_na <- as.data.frame(dates_2_na)
-
-data_host_na$year <- dates_2_na$dates
-
-# plot the data using ggplot
-ggplot(data = data_host_na, aes(x = year, y = n)) +
-  geom_bar(stat = "identity", fill = "purple") +
-  labs(title = "Date of becoming a host in years for the na dataset",
-              x = "year", y = "Number of host")
+# as you can see these aren't really usable plots. It is better to look at it in years. 
 
 
 
-
-# also for year
+# Lets convert the data to years for the dataset without na's
 dates <- as.POSIXct(data_host$host_since, format="%Y-%m-%d")
 dates_2 <- format(dates, format="%Y")
 dates_2 <- as.data.frame(dates_2)
 
 data_host$year <- dates_2$dates
 
-# plot the data using ggplot
+# And now plot the data using ggplot
 ggplot(data = data_host, aes(x = year, y = n)) +
   geom_bar(stat = "identity", fill = "purple") +
   labs(title = "Date of becoming a host in years",
               x = "year", y = "Number of host")
+
+# Better
+
+# Now let's also do this for the dataset with na's.
+
+# First convert the data to year
+dates_na <- as.POSIXct(data_host_na$host_since, format="%Y-%m-%d")
+dates_2_na <- format(dates_na, format="%Y")
+dates_2_na <- as.data.frame(dates_2_na)
+
+data_host_na$year <- dates_2_na$dates
+
+# And now plot the data using ggplot.
+ggplot(data = data_host_na, aes(x = year, y = n)) +
+  geom_bar(stat = "identity", fill = "purple") +
+  labs(title = "Date of becoming a host in years for the na dataset",
+              x = "year", y = "Number of host")
+
+# The plots do not differ much from each other. So the date is not the reason for the missing values. 
+
+
+# There is also the possibility that hosts can switch off the possibility to give a review. When looking at the renting on Airbnb page on the Airbnb websites there is no indication that host have the possibility that they can switch off the possibility to give a review. 
+
+
 ```
 
+```{r removing the na's}
+data_airbnb_uk_cleaned_2 <- data_airbnb_uk_cleaned_1 %>% drop_na()
+
+```
 ------
 Note Rob: Create new dataset without the NA's, name = data_airbnb_uk_cleaned_2.
 ------
