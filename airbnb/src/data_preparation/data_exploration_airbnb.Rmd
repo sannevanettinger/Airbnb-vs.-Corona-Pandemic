@@ -120,7 +120,7 @@ As this research focuses on the main question "Which types of rooms in which nei
 * quarter: The quarter in which the Airbnb is listed
 * year: The year in which the Airbnb is listed 
 * year_quarter: The year and quarter in which in the Airbnb is listed  
-* neighborhood_cleansed: The neigborhood in which the Airbnb is located 
+* neighborhood_cleansed: The neighborhood in which the Airbnb is located 
 * room_type: The type of room the Airbnb offers 
 * calculated_host_listings_count: The number of listings the host has in the current scrape, in the city / region geography 
 * host_listings_count: The number of listings the host has (per Airbnb calculations)
@@ -307,20 +307,37 @@ data_airbnb_uk_cleaned_2 <- data_airbnb_uk_cleaned_1 %>% drop_na()
 Note Rob: Create new dataset without the NA's, name = data_airbnb_uk_cleaned_2.
 ------
 
+#### Seeking and determining polluting values 
+To remove polluting data from the dataset, in order for the results to be ultimately representative, we run a boxplot for the numeric variables and a ggplot for the categorical variables as a visual approach to determine conspicuous values emerge. At a later point, these outliers are dealt with. The year-quarter related variables need no plotting, because the dataset is already filtered by those. The same goes for city. Also, id has nothing to do with polutted data, since it is in the dataset to identify a booking.
 
+```{r determining outliers}
+## for the variables neighbourhood_cleansed, room_type, calculated_host_listings_count, review_scores_rating_rescaled and price in the dataset data_airbnb_uk_cleaned_2
 
+# plot neighbourhood_cleansed
+ggplot(data_airbnb_uk_cleaned_2, aes(neighbourhood_cleansed)) +
+    geom_bar() +
+    labs(y = "neighbourhood_cleansed_count")
 
+# plot room_type
+ggplot(data_airbnb_uk_cleaned_2, aes(room_type)) +
+    geom_bar() +
+    labs(y = "room_type_count")
 
+# plot calculated_host_listings_count
+boxplot(data_airbnb_uk_cleaned_2$calculated_host_listings_count,
+  ylab = "calculated_host_listings_count"
+)
 
+# plot review_scores_rating_reschaled
+boxplot(data_airbnb_uk_cleaned_2$review_scores_rating_rescaled,
+  ylab = "review_scores_rating_reschaled_count"
+)
 
+# plot price
+boxplot(data_airbnb_uk_cleaned_2$price,
+  ylab = "price"
+)
 
+## Conclusion: (1) the variable neighbourhoods consists of too many categories to run a clear plot, we need to make categories out of them (I found out how, but it has way too much different neighbourhoods to do it manually). (2) The variable room_type clearly does not show many hotel rooms and shared rooms across from the other two types. (3) Calculated host listings has some outliers around 600 and around 900. (4) Review rating scores show a few outliers which are very low. We need to find out if these have a valuable reason. (5) Finally, price needs to be looked at more closely because the outlier-parts are in the middle - in this case - but not necessarily present. 
 
-
-
-
-
-
-
-
-
-
+```
