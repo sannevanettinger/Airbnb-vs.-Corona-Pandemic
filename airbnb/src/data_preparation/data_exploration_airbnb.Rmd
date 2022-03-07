@@ -68,6 +68,7 @@ listings_uk <- lapply(urls, function(url) {
 
 # merging the datasets into one dataset
 data_airbnb_uk = do.call('rbind', listings_uk)
+
 ```
 
 Now that the dataset is created, we want to save the raw data as an CSV file and store it in the data folder of this project on GitHub. This can be done by running the following code snippet:
@@ -116,7 +117,7 @@ Note: Maybe the following content should be in a second RMarkdown document as fr
 ### Deleting unnecessary columns
 As this research focuses on the main question "Which types of rooms in which neighborhoods benefited the most from the Corona Pandemic in the United Kingdom?", some variables in the original dataset might not be needed to come to an answer. For that reason only the following variables are kept in the dataset to maintain a clear overview of the variables needed for this research:
 * id: Airbnb's unique identifier for the listing
-*city: The city in which the Airbnb is located 
+* city: The city in which the Airbnb is located 
 * quarter: The quarter in which the Airbnb is listed
 * year: The year in which the Airbnb is listed 
 * year_quarter: The year and quarter in which in the Airbnb is listed  
@@ -134,7 +135,8 @@ Note Sanne: Later on, we add the variable review_scores_rating_rescaled. Should 
 The code below will copy the variables mentioned above into a new dataset, which then can be used to do analyses. 
 
 ```{r Delete unnecessary columns}
-data_airbnb_uk_cleaned_1 <- data_airbnb_uk %>% select(id, city, quarter, year, year_quarter, neighbourhood_cleansed, room_type, calculated_host_listings_count, review_scores_rating, price)
+data_airbnb_uk_cleaned_1 <- data_airbnb_uk %>% 
+  select(id, city, quarter, year, year_quarter, neighbourhood_cleansed, room_type, calculated_host_listings_count, review_scores_rating, price)
 ```
 
 ------
@@ -146,7 +148,7 @@ Claudia: Based on the meaning of the two variables (see above),  I think it is b
 Now that the variables of interest are captured in a dataset let's take a look at the data by executing a summary to get a feeling for the data and see if we can add some meaning to the variables. 
 
 ```{r}
-summary()
+summary(data_airbnb_uk_cleaned_1)
 ```
 
 
@@ -157,8 +159,9 @@ From the results of the summary above can be observed that we have to take a clo
 
 ```{r Rescale the variable: review_scores_rating}
 
-data_airbnb_uk_cleaned_1 <- data_airbnb_uk_cleaned_1 %>% mutate(review_scores_rating_rescaled = ifelse(review_scores_rating>5,review_scores_rating/20, review_scores_rating))
-         
+data_airbnb_uk_cleaned_1 <- data_airbnb_uk_cleaned_1 %>% 
+  mutate(review_scores_rating_rescaled = ifelse(review_scores_rating>5,review_scores_rating/20, review_scores_rating))
+  
 ```
 
 
@@ -180,14 +183,22 @@ class(data_airbnb_uk_cleaned_1$price)
 Note: Rewrite the code with updated names, here use the dataset: data_airbnb_uk_cleaned_1.(ALREADY REWRITTEN, JUST CHECK IF ALL GOES WELL RUNNING IT)
 ------
 
-#### Removing NA's
+```{r Checking the results of the issues solved}
+summary(data_airbnb_uk_cleaned_1)
+
+```
+
+
+#### Finding the origin of the missing values
 As seen in the statistics of the summary of the data a lot of data is missing from the variable "review_scores_rating". The missing data can have several reasons as for example technical issues. For the analyses later it is better to remove the observations with these so called NA's as these can bias the results of the analyses. The code snippet below removes the observations with the NA's and creates a new dataset. 
 
 Almost all the missing value's (in the variables that we will use in our analysis) are in the rating score variable. About 90,000 missing values. The host listing_count has around 2,000 missing values, but that is a relative small number when having more than 300,000 observations. 
 
+------
+Note Jurg: Host_listings_count is not used, but is stated in the small text above. The only variable that has missing values is review rating score. 
+------
 
-
-```{r Remove NA's}
+```{r Finding out the origin of the missing values}
 
 # First a dataset is created with the variables with only the oberservations that have NA's for the review score for comparison. 
 data_airbnb_uk_na <- data_airbnb_uk[is.na(data_airbnb_uk$review_scores_rating),]
@@ -200,7 +211,7 @@ data_airbnb_uk %>%
 data_airbnb_uk_na %>%
   count(host_is_superhost)
 
-# for the dataset with na's only 3,8% is a  superhost and for the dataset without the na's it is 14%
+# for the dataset with na's only 3,8% is a  superhost and for the dataset without the na's it is 14%. 
 
 
 # For these datasets the price also needs to be converted. 
@@ -259,8 +270,6 @@ ggplot(data = data_host_na, aes(x = host_since, y = n)) +
 
 # as you can see these aren't really usable plots. It is better to look at it in years. 
 
-
-
 # Lets convert the data to years for the dataset without na's
 dates <- as.POSIXct(data_host$host_since, format="%Y-%m-%d")
 dates_2 <- format(dates, format="%Y")
@@ -299,9 +308,21 @@ ggplot(data = data_host_na, aes(x = year, y = n)) +
 
 ```
 
-```{r removing the na's}
-data_airbnb_uk_cleaned_2 <- data_airbnb_uk_cleaned_1 %>% drop_na()
 
+-----
+Note Jurg: Maybe divide the code snippet above in multiple snippets, so it will be more clearer. 
+-----
+
+##### Conclusion of the missing values
+In the code snippet above we have tried to discover the origin of the missing values in the variable review_score_rating. We have used the variables host_is_superhost (i.e. whether or not the host is a superhost), price (i.e. price for 1 night) and host_since (i.e. since when the host joined AirBnB), however we could not find a clear cause for the missing values. 
+
+On the AirBnB website is stated about reviews that it works in a couple of steps (https://www.airbnb.nl/help/article/13/recensies-over-verblijven?_set_bev_on_new_domain=1646646197_Y2Y0ZjE1MTdjMjJm): (1) After the stay, AirBnB asks the guests to write a review and give the amount of stars (1-5) for the trip or guest. (2) Write the review within 14 days after the stay, afterwards you can not change it anymore. (3) Reviews are only posted if a) both parties have submitted a review or b) the period of 14 days has expired, depending on what arises first.
+It is also possible to give feedback in private to the host. This is shared only after the reviews are posted.
+
+So,there is a high chance that the missing values of the variable review_rating_score are caused by guests or hosts that do not write a review. 
+
+```{r Removing the NAs}
+data_airbnb_uk_cleaned_2 <- data_airbnb_uk_cleaned_1 %>% drop_na()
 ```
 ------
 Note Rob: Create new dataset without the NA's, name = data_airbnb_uk_cleaned_2.
@@ -310,13 +331,16 @@ Note Rob: Create new dataset without the NA's, name = data_airbnb_uk_cleaned_2.
 #### Seeking and determining polluting values 
 To remove polluting data from the dataset, in order for the results to be ultimately representative, we run a boxplot for the numeric variables and a ggplot for the categorical variables as a visual approach to determine conspicuous values emerge. At a later point, these outliers are dealt with. The year-quarter related variables need no plotting, because the dataset is already filtered by those. The same goes for city. Also, id has nothing to do with polutted data, since it is in the dataset to identify a booking.
 
-```{r determining outliers}
+```{r Determining outliers}
 ## for the variables neighbourhood_cleansed, room_type, calculated_host_listings_count, review_scores_rating_rescaled and price in the dataset data_airbnb_uk_cleaned_2
-
 # plot neighbourhood_cleansed
 ggplot(data_airbnb_uk_cleaned_2, aes(neighbourhood_cleansed)) +
     geom_bar() +
     labs(y = "neighbourhood_cleansed_count")
+
+# Count the different neighbourhoods
+data_airbnb_uk_cleaned_2 %>% 
+  count(neighbourhood_cleansed)
 
 # plot room_type
 ggplot(data_airbnb_uk_cleaned_2, aes(room_type)) +
@@ -330,7 +354,7 @@ boxplot(data_airbnb_uk_cleaned_2$calculated_host_listings_count,
 
 # plot review_scores_rating_reschaled
 boxplot(data_airbnb_uk_cleaned_2$review_scores_rating_rescaled,
-  ylab = "review_scores_rating_reschaled_count"
+  ylab = "review_scores_rating_rescaled_count"
 )
 
 # plot price
@@ -339,5 +363,8 @@ boxplot(data_airbnb_uk_cleaned_2$price,
 )
 
 ## Conclusion: (1) the variable neighbourhoods consists of too many categories to run a clear plot, we need to make categories out of them (I found out how, but it has way too much different neighbourhoods to do it manually). (2) The variable room_type clearly does not show many hotel rooms and shared rooms across from the other two types. (3) Calculated host listings has some outliers around 600 and around 900. (4) Review rating scores show a few outliers which are very low. We need to find out if these have a valuable reason. (5) Finally, price needs to be looked at more closely because the outlier-parts are in the middle - in this case - but not necessarily present. 
-
+```
+-----
+Note Jurg: I do not think we should try to plot the different neigbourhoods, maybe we can do just a count of the different neighbourhoods. Room type, however, is interesting to see. 
+-----
 ```
