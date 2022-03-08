@@ -323,7 +323,8 @@ So,there is a high chance that the missing values of the variable review_rating_
 
 ```{r Removing the NAs}
 # Removing the NAs and create a new dataset without the NAs
-data_airbnb_uk_cleaned_2 <- data_airbnb_uk_cleaned_1 %>% drop_na()
+data_airbnb_uk_cleaned_2 <- data_airbnb_uk_cleaned_1 %>% 
+  drop_na(review_scores_rating, review_scores_rating_rescaled)
 ```
 
 ------
