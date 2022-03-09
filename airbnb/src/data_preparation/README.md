@@ -15,7 +15,10 @@
 
 ## 1. Data Exploration
 ### 1.1 Explore data using summary statistics
-TEXT
+From the summary statistics the following results can be derived:
+*PASTE IMAGES GRAPHS ETC*
+
+The summary statistics indicate that the dataset contains approximately 16,500 to 18,000 NA's (= missing values) regarding the variables related to the review score. Besides that, it is also noticed that the range of the variable "review_scores_rating" is out of proportion. Another issue that can be observed from the summary statistics is that the variable "price" is captured as a character, while it should be captured as a numeric. 
 
 ### 1.2 Detect the origin of missing values
 TEXT
