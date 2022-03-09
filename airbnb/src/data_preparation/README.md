@@ -15,8 +15,16 @@
 
 ## 1. Data Exploration
 ### 1.1 Explore data using summary statistics
-From the summary statistics the following results can be derived:
-*PASTE IMAGES GRAPHS ETC*
+From the summary statistics the following results can be derived:  
+
+**Statistics observations per city**  
+*PASTE IMAGES GRAPHS ETC*  
+**Statistics LONDON: Neighbourhoods and room types**  
+*PASTE IMAGES GRAPHS ETC*  
+**Statistics GREAT MANCHESTER: Neighbourhoods and room types**  
+*PASTE IMAGES GRAPHS ETC*  
+**Statistics BRISTOL: Neighbourhoods and room types**  
+*PASTE IMAGES GRAPHS ETC*  
 
 The summary statistics indicate that the dataset contains approximately 16,500 to 18,000 NA's (= missing values) regarding the variables related to the review score. Besides that, it is also noticed that the range of the variable "review_scores_rating" is out of proportion. Another issue that can be observed from the summary statistics is that the variable "price" is captured as a character, while it should be captured as a numeric. 
 
