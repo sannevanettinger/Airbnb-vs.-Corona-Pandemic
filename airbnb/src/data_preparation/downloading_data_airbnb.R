@@ -27,9 +27,9 @@ library(R.utils)
 
 # Downloading the data from insideairbnb.com via Google Drive 
 data_id <- "1AzdybwMX-2QRfcolBv-2xT-5XKUeQpRhLBXtH1n47qM"  
-dir.create('../data/')
+dir.create("../../data/")
 drive_download(as_id(data_id), path = "../../data/listings_uk.csv", overwrite = TRUE)
-df_drive <- read.csv("listings_uk.csv")
+df_drive <- read.csv("../../data/listings_uk.csv")
 
 urls <- as.character(df_drive$link)
 
