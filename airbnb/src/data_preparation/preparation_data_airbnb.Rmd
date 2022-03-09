@@ -44,9 +44,8 @@ library(zoo)
 
 ```{r Import raw data, include=FALSE}
 # Import raw data
-#
-#
-#
+setwd("../../data")
+data_airbnb_uk <- read.csv("data_airbnb_uk.csv")
 ```
 
 
@@ -69,11 +68,10 @@ As the data of 2021 is collected per quarter, and the purpose of this research i
 
 ```{r Create new variables: quarter, year, year_quarter}
 # creating new variables
-data_airbnb_uk_cleaned <- data_airbnb_uk %>% 
-  data_airbnb_uk_cleaned$quarter <- get_quarter(data_airbnb_uk$last_scraped) %>% 
-  data_airbnb_uk_cleaned$year <- get_year(data_airbnb_uk$last_scraped) %>% 
-  data_airbnb_uk_cleaned$year_quarter <- as.yearqtr(data_airbnb_uk$last_scraped, format="%Y-%m-%d") %>% 
-  data_airbnb_uk_cleaned$year_quarter <- format(data_airbnb_uk_cleaned$year_quarter, format = "%Y-%q")
+data_airbnb_uk$quarter <- get_quarter(data_airbnb_uk$last_scraped)
+data_airbnb_uk$year <- get_year(data_airbnb_uk$last_scraped)
+data_airbnb_uk$year_quarter <- as.yearqtr(data_airbnb_uk$last_scraped, format="%Y-%m-%d")
+data_airbnb_uk$year_quarter <- format(data_airbnb_uk$year_quarter, format = "%Y-%q")
 ```
 
 ## 2. Delete unnecessary columns
@@ -92,7 +90,7 @@ As this research focuses on the main question "Which types of rooms in which nei
 
 
 ```{r Delete unnecessary columns}
-data_airbnb_uk_cleaned <- data_airbnb_uk_cleaned %>% 
+data_airbnb_uk_cleaned <- data_airbnb_uk %>% 
   select(id, city, quarter, year, year_quarter, neighbourhood_cleansed, room_type, calculated_host_listings_count, review_scores_rating, price)
 ```
 
@@ -135,6 +133,10 @@ data_airbnb_uk_cleaned <- data_airbnb_uk_cleaned %>%
 ```
 
 
+```{r Exporting the cleaned data to a CSV file}
+# Exporting the cleaned data to a CSV file
+write.csv(data_airbnb_uk_cleaned, '../../data/data_airbnb_uk_cleaned.csv', row.names = F)
+```
 
 
 
