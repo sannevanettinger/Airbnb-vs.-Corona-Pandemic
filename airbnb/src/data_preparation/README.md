@@ -38,7 +38,7 @@ The original dataset contains 4,741 observations in Bristol. The observations of
 The summary statistics indicate that the dataset contains approximately 16,500 to 18,000 NA's (= missing values) regarding the variables related to the review score. Besides that, it is also noticed that the range of the variable "review_scores_rating" is out of proportion. Another issue that can be observed from the summary statistics is that the variable "price" is captured as a character, while it should be captured as a numeric. 
 
 ### 1.2 Detect the origin of missing values
-TEXT
+From the summary statistics can be observed that the variable “review_scores_rating” contains many NA’s (= missing values), to be more precise 16,553. This is approximately 23% of the observations. As this is already one-fifth of the observations, an attempt was made to maybe discover the origin of the missing values in the variable “review_score_rating”. For this the variables host_is_superhost (i.e. whether or not the host is a superhost), price (i.e. price for 1 night) and host_since (i.e. since when the host joined AirBnB) have been used. However, no clear cause for the missing values was found. 
 
 ### 1.3 Determine outliers in the data
 TEXT
