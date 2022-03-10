@@ -21,7 +21,7 @@ From the summary statistics the following results can be derived:
 
 **Statistics observations per city**  
 The original dataset (raw data) contains 71,325 observations divided over the three cities: London, Great Manchester and Bristol. 
-![Summary-statistics-OVERALL](https://user-images.githubusercontent.com/89737678/157626262-9ee6c5f2-0145-4818-9e4d-4748708dd713.PNG)  
+![Summary-statistics-OVERALL-small](https://user-images.githubusercontent.com/89737678/157667408-d26551bb-e5df-4131-8567-a6e6f810ecd5.PNG)
 
 **Statistics LONDON: Neighbourhoods and room types**  
 The original dataset contains 52,986 observations in London. The observations of London are spread over 33 different neighbourhoods. 
