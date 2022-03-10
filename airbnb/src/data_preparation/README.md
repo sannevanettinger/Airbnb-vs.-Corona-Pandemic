@@ -75,4 +75,4 @@ From the data exploration became clear that the variable "price" in this data is
 In the data exploration attention was paid to NA's (= missing values) in the data, specific for the variable review_rating_score, by means of plots and summary statistics. From the plots and summary statistics it remains unclear what the direct cause is of the missing values in the dataset. However, it is expected that the missing values of the variable review_rating_score are caused by guests or hosts that do not write a review. As the observations with the missing values cannot be used for further analyses, they have been removed from the dataset.  
 
 ## 3. After cleaning
-The cleaned dataset (data_airbnb_uk_cleaned) contains 54,772 observations and 11 variables to work with. 
+The cleaned dataset (data_airbnb_uk_cleaned) contains 54,772 observations and 11 variables to work with. The cleaned dataset contains information on three different cities and in total 105 different neighbourhoods.
