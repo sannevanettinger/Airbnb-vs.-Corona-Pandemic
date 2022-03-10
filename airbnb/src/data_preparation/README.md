@@ -18,13 +18,20 @@
 From the summary statistics the following results can be derived:  
 
 **Statistics observations per city**  
-*PASTE IMAGES GRAPHS ETC*  
+The original dataset (raw data) contains 71,325 observations divided over the three cities: London, Great Manchester and Bristol. 
+![Summary-statistics-OVERALL](https://user-images.githubusercontent.com/89737678/157626262-9ee6c5f2-0145-4818-9e4d-4748708dd713.PNG)  
+
 **Statistics LONDON: Neighbourhoods and room types**  
-*PASTE IMAGES GRAPHS ETC*  
+The original dataset contains 52,986 observations in London. The observations of London are spread over 33 different neighbourhoods. 
+![Summary-statistics-LONDON](https://user-images.githubusercontent.com/89737678/157626260-de898dd6-eab6-41fc-923c-95713a75a8dc.PNG)  
+
 **Statistics GREAT MANCHESTER: Neighbourhoods and room types**  
-*PASTE IMAGES GRAPHS ETC*  
+The original dataset contains 13,597 observations in Great Manchester. The observations of Manchester are spread over 41 different neighbourhoods. 
+![Summary-statistics-GREAT-MANCHESTER](https://user-images.githubusercontent.com/89737678/157626257-bd2d93ab-6610-4c8c-9431-ce0efe931d6d.PNG)  
+
 **Statistics BRISTOL: Neighbourhoods and room types**  
-*PASTE IMAGES GRAPHS ETC*  
+The original dataset contains 4,741 observations in Bristol. The observations of Bristol are spread over 34 different neighbourhoods. 
+![Summary-statistics-BRISTOL](https://user-images.githubusercontent.com/89737678/157626252-edf4a0f4-b5f2-44a4-bcff-6fa6a4e77a7d.PNG)
 
 The summary statistics indicate that the dataset contains approximately 16,500 to 18,000 NA's (= missing values) regarding the variables related to the review score. Besides that, it is also noticed that the range of the variable "review_scores_rating" is out of proportion. Another issue that can be observed from the summary statistics is that the variable "price" is captured as a character, while it should be captured as a numeric. 
 
