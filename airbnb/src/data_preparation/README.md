@@ -1,7 +1,7 @@
 # Data Exploration & Preparation: Elaboration choices 
 ## Content 
 1. Data Exploration  
-1.1 Explore data using summary statistics  
+1.1 Explore raw data using summary statistics  
 1.2 Detect the origin of missing values   
 
 2. Data Preparation  
@@ -16,7 +16,7 @@
 3. After cleaning
 
 ## 1. Data Exploration
-### 1.1 Explore data using summary statistics
+### 1.1 Explore raw data using summary statistics
 From the summary statistics the following results can be derived:  
 
 **Statistics observations per city**  
