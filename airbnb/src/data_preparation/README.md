@@ -2,8 +2,7 @@
 ## Content 
 1. Data Exploration  
 1.1 Explore data using summary statistics  
-1.2 Detect the origin of missing values  
-1.3 Determine outliers in the data  
+1.2 Detect the origin of missing values   
 
 2. Data Preparation  
 2.1 Create new variables as reference to the quarterly data  
@@ -12,6 +11,7 @@
 2.4 Rescale the variable "review_scores_rating"  
 2.5 Change the variable "price" to numeric  
 2.6 Removing NA's from the dataset  
+2.7 Detect outliers in the data  
 
 3. After cleaning
 
@@ -40,8 +40,6 @@ The summary statistics indicate that the dataset contains approximately 16,500 t
 ### 1.2 Detect the origin of missing values
 From the summary statistics can be observed that the variable “review_scores_rating” contains many NA’s (= missing values), to be more precise 16,553. This is approximately 23% of the observations. As this is already one-fifth of the observations, an attempt was made to maybe discover the origin of the missing values in the variable “review_score_rating”. For this the variables host_is_superhost (i.e. whether or not the host is a superhost), price (i.e. price for 1 night) and host_since (i.e. since when the host joined AirBnB) have been used. However, no clear cause for the missing values was found. 
 
-### 1.3 Determine outliers in the data
-TEXT
 
 ## 2. Data Preparation
 ### 2.1 Create new variables as reference to the quarterly data
@@ -73,6 +71,18 @@ From the data exploration became clear that the variable "price" in this data is
 
 ### 2.6 Remove NA's from the dataset
 In the data exploration attention was paid to NA's (= missing values) in the data, specific for the variable review_rating_score, by means of plots and summary statistics. From the plots and summary statistics it remains unclear what the direct cause is of the missing values in the dataset. However, it is expected that the missing values of the variable review_rating_score are caused by guests or hosts that do not write a review. As the observations with the missing values cannot be used for further analyses, they have been removed from the dataset.  
+
+### 2.7 Detect outliers in the data
+From the statistics (boxplots and ggplots) used to detect outliers, it was observed that there are a few cases in which outliers seem to exist.
+
+**Outliers within the variable "num_host_listings"**  
+From the boxplot it is observed that there are cases for which the number of listings the host has lies above 600. This is remarkable as the mean lies approximately around 12 listings. From further analysis, by filtering on "num_host_listings" above 600, it is observed that 1390 observations have a higher number of listings than 600. The data indicates that it is about observations of which multiple have the same id, but relate to another quarter. Besides that, from the data can be derived that these possible outliers mostly relate to the room type 'Entire home/apt'.  
+
+**Outliers within the variable "price"**  
+The boxplot shows that there are some cases for which the price is above 10,000 dollar. From further analysis, by filtering on "price" above 10,000, it is observed that 43 observations have a price higher than 10,000. The data indicates that it is about observations of which multiple have the same id, but relate to another quarter. Besides that, from the data can be derived that these possible outliers mostly pertain to the room type 'Entire home/apt' and are all located in London.  
+
+However, the numbers of 'possible' outliers is in perspective of the total number of observations really small and will therefore not have any major impact on future analyses. 
+
 
 ## 3. After cleaning
 The cleaned dataset (data_airbnb_uk_cleaned) contains 54,772 observations and 11 variables to work with. The cleaned dataset contains information on three different cities and in total 105 different neighbourhoods.
