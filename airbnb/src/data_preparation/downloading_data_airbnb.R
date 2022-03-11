@@ -1,27 +1,12 @@
 # title: "Download data Airbnb - United Kingdom"
 # authors: "Team 2: Sanne van Ettinger, Claudia Berkhof, Demi van de Pol, Jurg Jacobs, Rob van der Wielen"
 
-# Install packages
-install.packages("plyr")
-install.packages("dplyr")
-install.packages("tidyverse")
-install.packages("ggplot2")
-install.packages("readr")
-install.packages("googledrive")
-install.packages("caret")
-install.packages("data.table")
-install.packages("R.utils")
-install.packages("dint")
-install.packages("zoo")
-
 # Loading packages
 library(plyr)
 library(dplyr)
 library(tidyverse)
-library(ggplot2)
 library(readr)
 library(googledrive)
-library(caret)
 library(data.table)
 library(R.utils)
 
@@ -45,8 +30,9 @@ listings_uk <- lapply(urls, function(url) {
 # Merging the datasets into one dataset
 data_airbnb_uk = do.call('rbind', listings_uk)
 
+
 # Exporting the raw data file (data_airbnb_uk) to a CSV file
-write.csv(data_airbnb_uk, '../../data/data_airbnb_uk.csv', row.names = F)
+fwrite(data_airbnb_uk, '../../data/data_airbnb_uk.csv', row.names = F)
 
 
 
