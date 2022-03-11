@@ -20,20 +20,20 @@
 From the summary statistics the following results can be derived:  
 
 **Statistics observations per city**  
-The original dataset (raw data) contains 71,325 observations divided over the three cities: London, Great Manchester and Bristol. 
-![Summary-statistics-OVERALL-small](https://user-images.githubusercontent.com/89737678/157667408-d26551bb-e5df-4131-8567-a6e6f810ecd5.PNG)
+The original dataset (raw data) contains 304,846 observations divided over the three cities: London, Great Manchester and Bristol. 
+![Summary-statistics-OVERALL-small-new](https://user-images.githubusercontent.com/89737678/157851982-28924d72-e02f-4203-a201-834337a718ec.PNG)  
 
 **Statistics LONDON: Neighbourhoods and room types**  
-The original dataset contains 52,986 observations in London. The observations of London are spread over 33 different neighbourhoods. 
-![Summary-statistics-LONDON](https://user-images.githubusercontent.com/89737678/157626260-de898dd6-eab6-41fc-923c-95713a75a8dc.PNG)  
+The original dataset contains 286,508 observations in London. The observations of London are spread over 33 different neighbourhoods. 
+![Summary-statistics-LONDON-new](https://user-images.githubusercontent.com/89737678/157851980-6b6d0906-5875-4720-9529-bb98b7ebd294.PNG)  
 
 **Statistics GREAT MANCHESTER: Neighbourhoods and room types**  
 The original dataset contains 13,597 observations in Great Manchester. The observations of Manchester are spread over 41 different neighbourhoods. 
-![Summary-statistics-GREAT-MANCHESTER](https://user-images.githubusercontent.com/89737678/157626257-bd2d93ab-6610-4c8c-9431-ce0efe931d6d.PNG)  
+![Summary-statistics-GREAT-MANCHESTER-new](https://user-images.githubusercontent.com/89737678/157851979-fdf7e165-e833-47f3-ab5e-eff2c4a5b229.PNG)  
 
 **Statistics BRISTOL: Neighbourhoods and room types**  
 The original dataset contains 4,741 observations in Bristol. The observations of Bristol are spread over 34 different neighbourhoods. 
-![Summary-statistics-BRISTOL](https://user-images.githubusercontent.com/89737678/157626252-edf4a0f4-b5f2-44a4-bcff-6fa6a4e77a7d.PNG)
+![Summary-statistics-BRISTOL-new](https://user-images.githubusercontent.com/89737678/157851971-8a44ef13-51fc-45a5-a6ef-174a070f7734.PNG)
 
 The summary statistics indicate that the dataset contains approximately 90,000 NA's (= missing values) regarding the variables related to the review score. Besides that, it is also noticed that the range of the variable "review_scores_rating" is out of proportion. Another issue that can be observed from the summary statistics is that the variable "price" is captured as a character, while it should be captured as a numeric. 
 
@@ -76,7 +76,7 @@ In the data exploration attention was paid to NA's (= missing values) in the dat
 From the statistics (boxplots and ggplots) used to detect outliers, it was observed that there are a few cases in which outliers seem to exist.
 
 **Outliers within the variable "num_host_listings"**  
-From the boxplot it is observed that there are cases for which the number of listings the host has lies above 600. This is remarkable as the mean lies approximately around 12 listings. From further analysis, by filtering on "num_host_listings" above 600, it is observed that 1390 observations have a higher number of listings than 600. The data indicates that it is about observations of which multiple have the same id, but relate to another quarter. Besides that, from the data can be derived that these possible outliers mostly relate to the room type 'Entire home/apt'.  
+From the boxplot it is observed that there are cases for which the number of listings the host has lies above 600. This is remarkable as the mean lies approximately around 20 listings. From further analysis, by filtering on "num_host_listings" above 600, it is observed that 1390 observations have a higher number of listings than 600. The data indicates that it is about observations of which multiple have the same id, but relate to another quarter. Besides that, from the data can be derived that these possible outliers mostly relate to the room type 'Entire home/apt'.  
 
 **Outliers within the variable "price"**  
 The boxplot shows that there are some cases for which the price is above 10,000 dollar. From further analysis, by filtering on "price" above 10,000, it is observed that 43 observations have a price higher than 10,000. The data indicates that it is about observations of which multiple have the same id, but relate to another quarter. Besides that, from the data can be derived that these possible outliers mostly pertain to the room type 'Entire home/apt' and are all located in London.  
@@ -85,4 +85,4 @@ However, the numbers of 'possible' outliers is in perspective of the total numbe
 
 
 ## 3. After cleaning
-The cleaned dataset (data_airbnb_uk_cleaned) contains 54,772 observations and 11 variables to work with. The cleaned dataset contains information on three different cities and in total 105 different neighbourhoods.
+The cleaned dataset (data_airbnb_uk_cleaned) contains 214,806 observations and 11 variables to work with. The cleaned dataset contains information on three different cities and in total 108 different neighbourhoods.
