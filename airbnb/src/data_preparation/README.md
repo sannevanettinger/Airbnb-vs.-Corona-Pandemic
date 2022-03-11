@@ -35,10 +35,10 @@ The original dataset contains 13,597 observations in Great Manchester. The obser
 The original dataset contains 4,741 observations in Bristol. The observations of Bristol are spread over 34 different neighbourhoods. 
 ![Summary-statistics-BRISTOL](https://user-images.githubusercontent.com/89737678/157626252-edf4a0f4-b5f2-44a4-bcff-6fa6a4e77a7d.PNG)
 
-The summary statistics indicate that the dataset contains approximately 16,500 to 18,000 NA's (= missing values) regarding the variables related to the review score. Besides that, it is also noticed that the range of the variable "review_scores_rating" is out of proportion. Another issue that can be observed from the summary statistics is that the variable "price" is captured as a character, while it should be captured as a numeric. 
+The summary statistics indicate that the dataset contains approximately 90,000 NA's (= missing values) regarding the variables related to the review score. Besides that, it is also noticed that the range of the variable "review_scores_rating" is out of proportion. Another issue that can be observed from the summary statistics is that the variable "price" is captured as a character, while it should be captured as a numeric. 
 
 ### 1.2 Detect the origin of missing values
-From the summary statistics can be observed that the variable “review_scores_rating” contains many NA’s (= missing values), to be more precise 16,553. This is approximately 23% of the observations. As this is already one-fifth of the observations, an attempt was made to maybe discover the origin of the missing values in the variable “review_score_rating”. For this the variables host_is_superhost (i.e. whether or not the host is a superhost) and host_since (i.e. since when the host joined AirBnB) have been used. However, no clear cause for the missing values was found. 
+From the summary statistics can be observed that the variable “review_scores_rating” contains many NA’s (= missing values), to be more precise 90,040. This is approximately 30% of the observations. As this is already one-fifth of the observations, an attempt was made to maybe discover the origin of the missing values in the variable “review_score_rating”. For this the variables host_is_superhost (i.e. whether or not the host is a superhost) and host_since (i.e. since when the host joined AirBnB) have been used. However, no clear cause for the missing values was found. 
 
 
 ## 2. Data Preparation
@@ -70,7 +70,7 @@ During the data exploration it was observed that the range of the variable "revi
 From the data exploration became clear that the variable "price" in this data is imported as a character. For further analyses the variable "price" needs to be changed into a numeric. Before this can be done the dollar sign and the comma for prices above thousand had to be removed. 
 
 ### 2.6 Remove NA's from the dataset
-In the data exploration attention was paid to NA's (= missing values) in the data, specific for the variable review_rating_score, by means of plots and summary statistics. From the plots and summary statistics it remains unclear what the direct cause is of the missing values in the dataset. However, it is expected that the missing values of the variable review_rating_score are caused by guests or hosts that do not write a review. As the observations with the missing values cannot be used for further analyses, they have been removed from the dataset.  
+In the data exploration attention was paid to NA's (= missing values) in the data, specific for the variable review_rating_score, by means of plots and summary statistics. From the plots and summary statistics it remains unclear what the direct cause is of the missing values in the dataset. However, it is expected that the missing values of the variable review_rating_score are caused by guests that do not write a review. As the observations with the missing values cannot be used for further analyses, they have been removed from the dataset.  
 
 ### 2.7 Detect outliers in the data
 From the statistics (boxplots and ggplots) used to detect outliers, it was observed that there are a few cases in which outliers seem to exist.
