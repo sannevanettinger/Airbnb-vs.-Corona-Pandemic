@@ -13,7 +13,23 @@ Finally, the team decided to compare data of the beginning of 2021 with the end 
 Figure 1: Timeline Corona Lockdown And Measures In The United Kingdom (Institute Of Government, 2022)   
   
 ## Research method
-As mentioned above, this research will focus on the conbinations of room types and neighbourhoods in London, United Kingdom. To be more precise 124 different room types-neighbourhood combinations. The number of bookings, the score of the reviews and price increases will be used as explanatory variables in this research. Since the dependent variable in this research (124 room types-neighbourhood combinations in London, United Kingdom) is a nominal variable, and the independent variables (number of listings, rating score, price) are metric variables, the method used in the research will be *Logistic Analysis*.
+As mentioned above, this research focused on how Airbnb was affected by the corona pandemic. More specifically, it analyzed how the number of listings, the review score rating, and the price were influenced by the corona pandemic. Moreover, it was considered whether some neighborhoods were more effected than others. To analyze this, several *ANOVA analyses* were performed as the independent variable (i.e., quarters) is non-metric, and the dependent variables (i.e., listings, review score rating, and price) are metric. Moreover, to see whether the affect dependent on the neighborhood, it was included as an interaction term.
+
+## Analysis and interpretation
+
+To see whether an anova was allowed to be performed, several assumptions had to be tested…
+
+# ANOVA price and quarter
+From the ANOVA we can conclude that there is a significant relationship between the variable quarters and price (p<0,001). This leads us to conclude that the corona pandemic had a significant effect on the price of an Airbnb. However, from the eta squared test, we can conclude that this affect was very small. 
+
+# ANOVA review score rating and quarter
+From the ANOVA we can conclude that there is a significant relationship between the variable quarters and review score rating (p<0,001). This leads us to conclude that the corona pandemic had a significant effect on the review score rating of an Airbnb. However, from the eta squared test, we can conclude that this affect was very small. 
+
+# ANOVA number of listings and quarter
+From the ANOVA we can conclude that there is a significant relationship between the variable quarters and number of listings (p<0.05). However, compared to the other two ANOVAs, the relationship is less significant as it only significant at a p-value smaller than 0.05 as supposed to 0.001. This leads us to conclude that the corona pandemic had a significant effect on the number of listings of an Airbnb. However, from the eta squared test, we can conclude that this affect was very small. 
+
+# ANOVA with interaction quarter * neighborhood
+From the ANOVAs with the interaction between quarter and neighborhood, we can conclude that there is no significant relationship between this interaction variable and the price, review score ratings, and number of listings. This leads us to conclude that the effect of the corona pandemic on the price, review score rating, and number of listings of  an Airbnb, did not significantly differ between different neighborhoods in the United Kingdom.
 
 ----
 
