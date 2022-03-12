@@ -19,16 +19,16 @@ As mentioned above, this research focused on how Airbnb was affected by the coro
 
 To see whether an anova was allowed to be performed, several assumptions had to be tested…
 
-# ANOVA price and quarter
+_**ANOVA price and quarter**_
 From the ANOVA we can conclude that there is a significant relationship between the variable quarters and price (p<0,001). This leads us to conclude that the corona pandemic had a significant effect on the price of an Airbnb. However, from the eta squared test, we can conclude that this affect was very small. 
 
-# ANOVA review score rating and quarter
+_**ANOVA review score rating and quarter**_
 From the ANOVA we can conclude that there is a significant relationship between the variable quarters and review score rating (p<0,001). This leads us to conclude that the corona pandemic had a significant effect on the review score rating of an Airbnb. However, from the eta squared test, we can conclude that this affect was very small. 
 
-# ANOVA number of listings and quarter
+_**ANOVA number of listings and quarter**_
 From the ANOVA we can conclude that there is a significant relationship between the variable quarters and number of listings (p<0.05). However, compared to the other two ANOVAs, the relationship is less significant as it only significant at a p-value smaller than 0.05 as supposed to 0.001. This leads us to conclude that the corona pandemic had a significant effect on the number of listings of an Airbnb. However, from the eta squared test, we can conclude that this affect was very small. 
 
-# ANOVA with interaction quarter * neighborhood
+_**ANOVA with interaction quarter * neighborhood**_
 From the ANOVAs with the interaction between quarter and neighborhood, we can conclude that there is no significant relationship between this interaction variable and the price, review score ratings, and number of listings. This leads us to conclude that the effect of the corona pandemic on the price, review score rating, and number of listings of  an Airbnb, did not significantly differ between different neighborhoods in the United Kingdom.
 
 ----
