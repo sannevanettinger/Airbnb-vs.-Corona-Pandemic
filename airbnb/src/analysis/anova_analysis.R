@@ -3,32 +3,44 @@
 # Installing and loading the packages
 install.packages("car")
 install.packages("effectsize")
+install.packages("emmeans")
+install.packages("agricolae")
 library(car)
 library(effectsize)
+library(emmeans)
+library(agricolae)
 
 ## Import the cleaned data
-setwd("../gen/analysis/input")
+setwd("../../gen/analysis/input")
 data_airbnb_uk_cleaned <- read.csv("data_airbnb_uk_cleaned.csv")
 
 # Charactarize independent variables
 data_airbnb_uk_cleaned$quarter <- as.factor(data_airbnb_uk_cleaned$quarter)
+data_airbnb_uk_cleaned$quarter <- factor(data_airbnb_uk_cleaned$quarter, levels=c(1,2,3,4), labels=c("quarter_1", "quarter_2", "quarter_3", "quarter_4"))
 
-## Anova with quarter as independent variable and price, review_scores_rating_rescaled, and calculated_host_listings_count as dependent variables
-anova1 <- lm(price ~ quarter, data_airbnb_uk_cleaned)
-Anova(anova1, type = 3)
+#ANOVA with quarter as independent variable and price, review_scores_rating_rescaled, and calculated_host_listings_count as dependent variables
+anova_1 <- aov(price ~ quarter, data_airbnb_uk_cleaned)
+summary(anova_1)
 
-anova2 <- lm(review_scores_rating_rescaled ~ quarter, data_airbnb_uk_cleaned)
-Anova(anova2, type = 3)
+anova_2 <- aov(review_scores_rating_rescaled ~ quarter, data_airbnb_uk_cleaned)
+summary(anova_2)
 
-anova3 <- lm(num_host_listings ~ quarter, data_airbnb_uk_cleaned)
-Anova(anova3, type = 3)
+anova_3 <- aov(num_host_listings ~ quarter, data_airbnb_uk_cleaned)
+summary(anova_3)
 
-# Effect size for the Anova's
-eta_squared(anova_price, ci=0.95, partial = TRUE)
+#Effect size for the ANOVAs
+eta_squared(anova_1, ci=0.95, partial = TRUE)
 
-eta_squared(anova_review_score, ci=0.95, partial = TRUE)
+eta_squared(anova_2, ci=0.95, partial = TRUE)
 
-eta_squared(anova_listings, ci=0.95, partial = TRUE)
+eta_squared(anova_3, ci=0.95, partial = TRUE)
+
+#Post hoc test: Tukey Test
+TukeyHSD(anova_1)
+
+TukeyHSD(anova_2)
+
+TukeyHSD(anova_3)
 
 #Moderation effect of neighbourhood (be patient when loading the moderators)
 mod1 <- aov(price ~ quarter*neighbourhood_name, data = data_airbnb_uk_cleaned)
@@ -59,14 +71,19 @@ shapiro.test(data_airbnb_uk_cleaned_sample$num_host_listings)
 ## Since all the p-values of the Shapiro-Wilk normality test are lower than 0.05, it can be concluded that the data is NOT normally distributed.
 
 
-#Save Anova & assumptions output
-## Anova
-capture.output(Anova(anova1, type = 3),  file = "../output/anova1_airbnb.doc")
-capture.output(Anova(anova2, type = 3),  file = "../output/anova2_airbnb.doc")
-capture.output(Anova(anova3, type = 3),  file = "../output/anova3_airbnb.doc")
+#Save ANOVA & assumptions output
+## ANOVA
+capture.output(summary(anova_1),  file = "../output/anova1_airbnb.doc")
+capture.output(summary(anova_2),  file = "../output/anova2_airbnb.doc")
+capture.output(summary(anova_3),  file = "../output/anova3_airbnb.doc")
 capture.output(summary(mod1),  file = "../output/mod1_airbnb.doc")
 capture.output(summary(mod2),  file = "../output/mod2_airbnb.doc")
 capture.output(summary(mod3),  file = "../output/mod3_airbnb.doc")
+
+##Post hoc test
+capture.output(TukeyHSD(anova_1),  file = "../output/tukeytest_anova1_airbnb.doc")
+capture.output(TukeyHSD(anova_2),  file = "../output/tukeytest_anova2_airbnb.doc")
+capture.output(TukeyHSD(anova_3),  file = "../output/tukeytest_anova3_airbnb.doc")
 
 ## Anova assumptions
 capture.output(leveneTest(price ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample), file = "../output/levene_test1_airbnb.doc")
@@ -76,4 +93,4 @@ capture.output(shapiro.test(data_airbnb_uk_cleaned_sample$price), file = "../sha
 capture.output(shapiro.test(data_airbnb_uk_cleaned_sample$review_scores_rating_rescaled), file = "../shapiro_test2_airbnb.doc")
 capture.output(shapiro.test(data_airbnb_uk_cleaned_sample$num_host_listings), file = "../shapiro_test3_airbnb.doc")
 
-#The above part can be kept, below not
+
