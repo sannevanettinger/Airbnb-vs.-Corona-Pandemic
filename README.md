@@ -31,7 +31,8 @@ TEXT
 TEXT  
 
 ## 4. SOFTWARE SETUP 
-TEXT
+* Download R-packages: plyr, dplyr, tidyverse, ggplot2, readr, googledrive, carat, data.table, R.utils, dint, zoo, summarytools, car, effectsize, emmeans,  agricolae. *Important for Mac-users: Install XQuartz from www.xquarts.org*
+* Install GNU make: To install GNU make (both Mac and Windows users) go to this link: "https://tilburgsciencehub.com/building-blocks/configure-your-computer/automation-and-workflows/make/."  
 
 ## 5. RUNNING INSTRUCTIONS  
 TEXT
