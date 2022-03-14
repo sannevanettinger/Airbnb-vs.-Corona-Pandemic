@@ -10,7 +10,8 @@ TEXT
 5. Running instructions
 6. Research method
 7. Analysis & interpretation
-8. About
+8. Conclusion
+9. About
 
 
 ## 1. RESEARCH MOTIVATION
@@ -73,7 +74,9 @@ _**ANOVA with interaction quarter * neighborhood**_
 
 From the ANOVAs with the interaction between quarter and neighborhood, we can conclude that there is no significant relationship between this interaction variable and the price, review score ratings, and number of listings. This leads us to conclude that the effect of the corona pandemic on the price, review score rating, and number of listings of  an Airbnb, did not significantly differ between different neighborhoods in the United Kingdom.  
 
-## 8. ABOUT
+## 8. CONCLUSION
+
+## 9. ABOUT
 TEXT
 
 ----
