@@ -1,33 +1,41 @@
 # ANOVA ANALYSIS
 
 # Installing and loading the packages
-install.packages("car")
-install.packages("effectsize")
-install.packages("emmeans")
-install.packages("agricolae")
-install.packages("dplyr")
+# install.packages("car")
+# install.packages("effectsize")
+# install.packages("emmeans")
+# install.packages("agricolae")
+# install.packages("dplyr")
+# install.packages("data.table")
+# install.packages("ggplot2")
 library(car)
 library(effectsize)
 library(emmeans)
 library(agricolae)
 library(dplyr)
+library(data.table)
+library(ggplot2)
 
 ## Import the cleaned data
-setwd("../../gen/analysis/input")
-data_airbnb_uk_cleaned <- read.csv("data_airbnb_uk_cleaned.csv")
+data_airbnb_uk_cleaned <- data.frame(fread("../../analysis/input/data_airbnb_uk_cleaned.csv"))
 
 # Charactarize independent variables
 data_airbnb_uk_cleaned$quarter <- as.factor(data_airbnb_uk_cleaned$quarter)
-data_airbnb_uk_cleaned$quarter <- factor(data_airbnb_uk_cleaned$quarter, levels=c(1,2,3,4), labels=c("quarter_1", "quarter_2", "quarter_3", "quarter_4"))
 
 # Assumptions ANOVA
 # Randomly selecting 5000 rows from the dataset to investigate homoskedasticity and normality
 data_airbnb_uk_cleaned_sample <- sample_n(data_airbnb_uk_cleaned, 5000)
 
 # homoskedasticity
+## neighbourhood
 leveneTest(price ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample)
 leveneTest(review_scores_rating_rescaled ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample)
 leveneTest(num_host_listings ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample)
+
+## room_type
+leveneTest(price ~ quarter*room_type, data_airbnb_uk_cleaned_sample)
+leveneTest(review_scores_rating_rescaled ~ quarter*room_type, data_airbnb_uk_cleaned_sample)
+leveneTest(num_host_listings ~ quarter*room_type, data_airbnb_uk_cleaned_sample)
 
 # normality
 shapiro.test(data_airbnb_uk_cleaned_sample$price)
@@ -58,7 +66,8 @@ TukeyHSD(anova_2)
 
 TukeyHSD(anova_3)
 
-#Moderation effect of neighbourhood (be patient when loading the moderators)
+#Moderation effect of neighbourhood and room_type (be patient when loading the moderators)
+## Neighbourhood
 mod1 <- aov(price ~ quarter*neighbourhood_name, data = data_airbnb_uk_cleaned)
 summary(mod1)
 
@@ -68,6 +77,70 @@ summary(mod2)
 mod3 <- aov(num_host_listings ~ quarter*neighbourhood_name, data = data_airbnb_uk_cleaned)
 summary(mod3)
 
+## Room_type
+mod4 <- aov(price ~ quarter*room_type, data = data_airbnb_uk_cleaned)
+summary(mod4)
+
+mod5 <- aov(review_scores_rating_rescaled ~ quarter*room_type, data = data_airbnb_uk_cleaned)
+summary(mod5)
+
+mod6 <- aov(num_host_listings ~ quarter*room_type, data = data_airbnb_uk_cleaned)
+summary(mod6)
+
+# Tukey tests for moderation effect
+TukeyHSD(mod4)
+
+TukeyHSD(mod5)
+
+TukeyHSD(mod6)
+
+# Effect size of the ANOVAs with moderation effect
+eta_squared(mod4, ci=0.95, partial = TRUE)
+
+eta_squared(mod5, ci=0.95, partial = TRUE)
+
+eta_squared(mod6, ci=0.95, partial = TRUE)
+
+# Plot price over time
+data_airbnb_uk_cleaned$quarter <- as.numeric(data_airbnb_uk_cleaned$quarter)
+dt_price <- as.data.table(data_airbnb_uk_cleaned)
+plot_price <- dt_price[, .(mean_price = mean(price)), 
+                       by = .(quarter, room_type)]
+
+ggplot(data = plot_price, aes(x = quarter, y = mean_price)) +
+  geom_line(aes(color = room_type, linetype = room_type)) +
+  geom_point(aes(color = room_type, linetype = room_type)) +
+  ggtitle("Price change in 2021 per room type") +
+  xlab("Quarters 2021") +
+  ylab("Price") +
+  ylim(0, 200)
+
+# Plot review_score over time
+dt_review_score <- as.data.table(data_airbnb_uk_cleaned)
+plot_review_score <- dt_review_score[, .(mean_review_score = mean(review_scores_rating_rescaled)), 
+                                     by = .(quarter, room_type)]
+
+ggplot(data = plot_review_score, aes(x = quarter, y = mean_review_score)) +
+  geom_line(aes(color = room_type, linetype = room_type)) +
+  geom_point(aes(color = room_type, linetype = room_type)) +
+  ggtitle("Change in review score in 2021 per room type") +
+  xlab("Quarters 2021") +
+  ylab("Review score") +
+  ylim(0, 5)
+
+# Plot number of listings over time
+dt_listings <- as.data.table(data_airbnb_uk_cleaned)
+plot_listings <- dt_listings[, .(mean_listings = mean(num_host_listings)), 
+                             by = .(quarter, room_type)]
+
+ggplot(data = plot_listings, aes(x = quarter, y = mean_listings)) +
+  geom_line(aes(color = room_type, linetype = room_type)) +
+  geom_point(aes(color = room_type, linetype = room_type)) +
+  ggtitle("Change in number of listings in 2021 per room type") +
+  xlab("Quarters 2021") +
+  ylab("Number of listings") +
+  ylim(0, 100)
+
 #Save ANOVA & assumptions output
 ## ANOVA
 capture.output(summary(anova_1),  file = "../output/anova1_airbnb.doc")
@@ -76,18 +149,33 @@ capture.output(summary(anova_3),  file = "../output/anova3_airbnb.doc")
 capture.output(summary(mod1),  file = "../output/mod1_airbnb.doc")
 capture.output(summary(mod2),  file = "../output/mod2_airbnb.doc")
 capture.output(summary(mod3),  file = "../output/mod3_airbnb.doc")
+capture.output(summary(mod4),  file = "../output/mod4_airbnb.doc")
+capture.output(summary(mod5),  file = "../output/mod5_airbnb.doc")
+capture.output(summary(mod6),  file = "../output/mod6_airbnb.doc")
+
+## Eta squared
+### ANOVA, quarter as IV
+capture.output(eta_squared(anova_1, ci=0.95, partial = TRUE), file = "../output/eta_squared_anova1_airbnb.doc")
+capture.output(eta_squared(anova_2, ci=0.95, partial = TRUE), file = "../output/eta_squared_anova2_airbnb.doc")
+capture.output(eta_squared(anova_3, ci=0.95, partial = TRUE), file = "../output/eta_squared_anova3_airbnb.doc")
+
+## ANOVA, quarter as IV and moderation effect of room_type
+capture.output(eta_squared(mod4, ci=0.95, partial = TRUE), file = "../output/eta_squared_mod4_airbnb.doc")
+capture.output(eta_squared(mod5, ci=0.95, partial = TRUE), file = "../output/eta_squared_mod5_airbnb.doc")
+capture.output(eta_squared(mod6, ci=0.95, partial = TRUE), file = "../output/eta_squared_mod6_airbnb.doc")
 
 ##Post hoc test
 capture.output(TukeyHSD(anova_1),  file = "../output/tukeytest_anova1_airbnb.doc")
 capture.output(TukeyHSD(anova_2),  file = "../output/tukeytest_anova2_airbnb.doc")
 capture.output(TukeyHSD(anova_3),  file = "../output/tukeytest_anova3_airbnb.doc")
+capture.output(TukeyHSD(mod4), file = "../output/tukeytest_mod4_airbnb.doc")
+capture.output(TukeyHSD(mod5), file = "../output/tukeytest_mod5_airbnb.doc")
+capture.output(TukeyHSD(mod6), file = "../output/tukeytest_mod6_airbnb.doc")
 
 ## Anova assumptions
 capture.output(leveneTest(price ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample), file = "../output/levene_test1_airbnb.doc")
 capture.output(leveneTest(review_scores_rating_rescaled ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample), file = "../output/levene_test2_airbnb.doc")
 capture.output(leveneTest(num_host_listings ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample), file = "../output/levene_test3_airbnb.doc")
-capture.output(shapiro.test(data_airbnb_uk_cleaned_sample$price), file = "../shapiro_test1_airbnb.doc")
-capture.output(shapiro.test(data_airbnb_uk_cleaned_sample$review_scores_rating_rescaled), file = "../shapiro_test2_airbnb.doc")
-capture.output(shapiro.test(data_airbnb_uk_cleaned_sample$num_host_listings), file = "../shapiro_test3_airbnb.doc")
-
-
+capture.output(shapiro.test(data_airbnb_uk_cleaned_sample$price), file = "../output/shapiro_test1_airbnb.doc")
+capture.output(shapiro.test(data_airbnb_uk_cleaned_sample$review_scores_rating_rescaled), file = "../output/shapiro_test2_airbnb.doc")
+capture.output(shapiro.test(data_airbnb_uk_cleaned_sample$num_host_listings), file = "../output/shapiro_test3_airbnb.doc")
