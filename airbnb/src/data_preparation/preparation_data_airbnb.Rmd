@@ -348,7 +348,7 @@ dfSummary(data_airbnb_uk_cleaned$quarter)
 ```{r Write the cleaned data to a CSV file}
 # Exporting the cleaned data to a CSV file
 dir.create("../../gen/analysis/input/")
-write.csv(data_airbnb_uk_cleaned, '../../gen/analysis/input/data_airbnb_uk_cleaned.csv', row.names = F)
+fwrite(data_airbnb_uk_cleaned, '../../gen/analysis/input/data_airbnb_uk_cleaned.csv', row.names = F)
 ```
 
 
