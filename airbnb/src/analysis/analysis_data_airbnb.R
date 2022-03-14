@@ -5,10 +5,12 @@ install.packages("car")
 install.packages("effectsize")
 install.packages("emmeans")
 install.packages("agricolae")
+install.packages("dplyr")
 library(car)
 library(effectsize)
 library(emmeans)
 library(agricolae)
+library(dplyr)
 
 ## Import the cleaned data
 setwd("../../gen/analysis/input")
@@ -17,6 +19,20 @@ data_airbnb_uk_cleaned <- read.csv("data_airbnb_uk_cleaned.csv")
 # Charactarize independent variables
 data_airbnb_uk_cleaned$quarter <- as.factor(data_airbnb_uk_cleaned$quarter)
 data_airbnb_uk_cleaned$quarter <- factor(data_airbnb_uk_cleaned$quarter, levels=c(1,2,3,4), labels=c("quarter_1", "quarter_2", "quarter_3", "quarter_4"))
+
+# Assumptions ANOVA
+# Randomly selecting 5000 rows from the dataset to investigate homoskedasticity and normality
+data_airbnb_uk_cleaned_sample <- sample_n(data_airbnb_uk_cleaned, 5000)
+
+# homoskedasticity
+leveneTest(price ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample)
+leveneTest(review_scores_rating_rescaled ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample)
+leveneTest(num_host_listings ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample)
+
+# normality
+shapiro.test(data_airbnb_uk_cleaned_sample$price)
+shapiro.test(data_airbnb_uk_cleaned_sample$review_scores_rating_rescaled)
+shapiro.test(data_airbnb_uk_cleaned_sample$num_host_listings)
 
 #ANOVA with quarter as independent variable and price, review_scores_rating_rescaled, and calculated_host_listings_count as dependent variables
 anova_1 <- aov(price ~ quarter, data_airbnb_uk_cleaned)
@@ -51,25 +67,6 @@ summary(mod2)
 
 mod3 <- aov(num_host_listings ~ quarter*neighbourhood_name, data = data_airbnb_uk_cleaned)
 summary(mod3)
-     
-# Assumptions ANOVA
-# Randomly selecting 5000 rows from the dataset to investigate homoskedasticity and normality
-data_airbnb_uk_cleaned_sample <- sample_n(data_airbnb_uk_cleaned, 5000)
-
-# homoskedasticity
-leveneTest(price ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample)
-leveneTest(review_scores_rating_rescaled ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample)
-leveneTest(num_host_listings ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample)
-
-## all of the values in the Levene's Test are higher than 0.05, so we can not reject the null hypothesis (variances are equal). In other words, there is homoskedasticity for all the variables.
-
-# normality
-shapiro.test(data_airbnb_uk_cleaned_sample$price)
-shapiro.test(data_airbnb_uk_cleaned_sample$review_scores_rating_rescaled)
-shapiro.test(data_airbnb_uk_cleaned_sample$num_host_listings)
-
-## Since all the p-values of the Shapiro-Wilk normality test are lower than 0.05, it can be concluded that the data is NOT normally distributed.
-
 
 #Save ANOVA & assumptions output
 ## ANOVA

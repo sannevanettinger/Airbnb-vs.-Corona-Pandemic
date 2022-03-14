@@ -17,7 +17,19 @@ As mentioned above, this research focused on how Airbnb was affected by the coro
 
 ## Analysis and interpretation
 
-To see whether an anova was allowed to be performed, several assumptions had to be tested…
+To see whether an anova was allowed to be performed, several assumptions had to be tested: homogeneity of variance, normality of the distribution and independence of observations. For this, we set up an sample of 5000 observations.
+
+_**Homogeneity of variance**_
+
+From the Levene's Test we can conclude that the variance among the groups are approximately equal, since all of the variables are higher than 0.05.
+
+_**Normality of the distribution**_
+
+From the Shapiro Wilk normality test we can conclude that all of the variables in the sample are not normally distributed, since all of the variables have a p-value smaller than 0.05. As a result, the normality is violated for all variables, however, this is not a problem for conducting and interpreting the ANOVA analyses since we have a large sample size. 
+
+_**Independence of observations**_
+
+Independence of observations is only achieved if the experiment is set up correctly. That is, when the sample is randomly selected. Since we have used the function 'sample_n' to collect 5000 observations in a newly created data frame, we can conclude that the observations are independent and we can continue with the ANOVA analyses.
 
 _**ANOVA price and quarter**_
 
