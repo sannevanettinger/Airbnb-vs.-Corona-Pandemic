@@ -39,8 +39,7 @@ TEXT
 ## 6. RESEARCH METHOD 
 To address the aforementioned research question multiple AirBnB datasets, derived from InsideAirbnb, are combined to one big dataset containing data from three cities in the United Kingdom: London, Bristol and Great Manchester. In total 11 different datasets are combined, each containing information per quarter.  
 
-However, the raw dataset contain lots of information, of which many is not needed to address the research question this repository is dedicated to. Therefore the data is cleaned and prepared for analyses. For more information about this read: **(ADD LINK README IN SRC/DATA_PREPARATION FOLDER)**  
-<a href="airbnb/src/data_preparation/README.md">airbnb/src/data_preparation/README.md</a>   
+However, the raw dataset contain lots of information, of which many is not needed to address the research question this repository is dedicated to. Therefore the data is cleaned and prepared for analyses. For more information about this read: <a href="airbnb/src/data_preparation/README.md">airbnb/src/data_preparation/README.md</a>   
 
 In this research the following conceptual model applied:
 ![Conceptual-model-2-Airbnb-UK](https://user-images.githubusercontent.com/89737678/158207922-a82dcbc9-23d1-4146-9553-58ede7cbc343.PNG)
@@ -50,4 +49,4 @@ The variables "*review_scores_rating*", "*num_host_listings*", "*price*", "*room
 ## 7. CONCLUSION
 TEXT
 (ADD LINK README IN GEN/ANALYSIS FOLDER)
-
+For more detailed information about the findings of the analyses read: <a href="airbnb/gen/analysis/README.md">airbnb/gen/analysis/README.md</a>   
