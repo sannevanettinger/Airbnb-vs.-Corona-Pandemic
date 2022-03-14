@@ -1,6 +1,4 @@
-## 7. ANALYSIS & INTERPRETATION
-TEXT
-
+## ANALYSIS & INTERPRETATION
 To see whether an anova was allowed to be performed, several assumptions had to be tested: homogeneity of variance, normality of the distribution and independence of observations. For this, we set up an sample of 5000 observations.
 
 _**Homogeneity of variance**_
