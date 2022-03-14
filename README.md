@@ -44,6 +44,8 @@ However, the raw dataset contain lots of information, of which many is not neede
 In this research the following conceptual model applied:
 ![Conceptual-model-2-Airbnb-UK](https://user-images.githubusercontent.com/89737678/158207922-a82dcbc9-23d1-4146-9553-58ede7cbc343.PNG)
 
+The variables "*review_scores_rating*", "*num_host_listings*", "*price*", "*room_type*", "*neighbourhood_name*" and "*quarter*" are the leading players in this research. For the analyses several *ANOVA analyses* were performed as the independent variable (i.e., quarters) is non-metric, and the dependent variables (i.e., listings, review score rating, and price) are metric. Moreover, to see whether the effect depends on the neighbourhood and room type, it was included as an interaction term.
+
 ## 7. CONCLUSION
 TEXT
 (ADD LINK README IN GEN/ANALYSIS FOLDER)
