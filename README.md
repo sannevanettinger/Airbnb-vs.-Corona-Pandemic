@@ -9,7 +9,8 @@ TEXT
 4. Software setup
 5. Running instructions
 6. Research method
-7. About
+7. Analysis & interpretation
+8. About
 
 
 ## 1. RESEARCH MOTIVATION
@@ -37,13 +38,10 @@ TEXT
 TEXT
 
 ## 6. RESEARCH METHOD 
-As mentioned above, this research focused on how Airbnb was affected by the corona pandemic. More specifically, it analyzed how the number of listings, the review score rating, and the price were influenced by the corona pandemic. Moreover, it was considered whether some neighborhoods were more effected than others. To analyze this, several *ANOVA analyses* were performed as the independent variable (i.e., quarters) is non-metric, and the dependent variables (i.e., listings, review score rating, and price) are metric. Moreover, to see whether the affect dependent on the neighborhood, it was included as an interaction term.
+As mentioned in the research motivation, this research focused on how Airbnb was affected by the corona pandemic. More specifically, it analyzed how the number of listings per host, the review score rating, and the price were influenced by the corona pandemic. Moreover, it was considered whether some neighbourhoods were more effected than others. To analyze this, several *ANOVA analyses* were performed as the independent variable (i.e., quarters) is non-metric, and the dependent variables (i.e., listings, review score rating, and price) are metric. Moreover, to see whether the effect depends on the neighbourhood and room type, it was included as an interaction term.
 
 ## 7. ANALYSIS & INTERPRETATION
 TEXT
-
-
-## Analysis and interpretation
 
 To see whether an anova was allowed to be performed, several assumptions had to be tested: homogeneity of variance, normality of the distribution and independence of observations. For this, we set up an sample of 5000 observations.
 
@@ -75,7 +73,7 @@ _**ANOVA with interaction quarter * neighborhood**_
 
 From the ANOVAs with the interaction between quarter and neighborhood, we can conclude that there is no significant relationship between this interaction variable and the price, review score ratings, and number of listings. This leads us to conclude that the effect of the corona pandemic on the price, review score rating, and number of listings of  an Airbnb, did not significantly differ between different neighborhoods in the United Kingdom.  
 
-## 7. ABOUT
+## 8. ABOUT
 TEXT
 
 ----
