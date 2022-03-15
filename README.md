@@ -21,7 +21,7 @@ This README entails a detailed description on how to use the contents of this re
 ## 1. Research motivation
 It is generally known that the impact of the Corona Pandemic on the traveling and tourism market has been enormous. Due to Corona measures, it even was almost impossible to travel between countries. However, the traveling and toerism market undergone some changes - either positively or negatively - over time.  
 
-Whereas for many countries the Corona Pandemic played a huge role in daily life at the beginning of 2021, this was much less the case at the end of 2021. As the United Kingdom was one of the countries that let go of the Corona measures first. It is interesting to see whether there are certain changes in the traveling and tourism market in the United Kingdom. For this short research project the general question reads as follows: "*Which types of rooms in which neighbourhoods benefited the most from the Corona Pandemic in London, United Kingdom?*"  
+Whereas for many countries the Corona Pandemic played a huge role in daily life at the beginning of 2021, this was much less the case at the end of 2021. As the United Kingdom was one of the countries that let go of the Corona measures first. It is interesting to see whether there are certain changes in the traveling and tourism market in the United Kingdom. For this short research project the general question reads as follows: "*Which types of rooms in which neighbourhoods benefited the most from the Corona Pandemic in the United Kingdom?*"  
   
 ## 2. Setup of the repository  
 TEXT: Display overview of the repsitory.  
