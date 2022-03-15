@@ -52,11 +52,10 @@ The variables "*review_scores_rating*", "*num_host_listings*", "*price*", "*room
 
 ## 7. Conclusion
 From our analysis we can conclude that, due to the easing of the corona restrictions mid 2021, and the opening back up of the country, …
-•	The price of an Airbnb on average increased by £18.77
-•	The review score rating of an Airbnb on average decreased  by 0.11 
-•	The number of Airbnb listings per host on average increased by 1.25
-•	The review score rating of an Airbnb on average decreased by 0.07, 0.16, and 0.40 for entire homes / apartments, private rooms, and shared rooms respectively 
-•	The number of Airbnb listings per host on average decreased by 3.85
-
-(ADD LINK README IN GEN/ANALYSIS FOLDER)  
+1. The price of an Airbnb on average increased by £18.77
+2. The review score rating of an Airbnb on average decreased  by 0.11 
+3. The number of Airbnb listings per host on average increased by 1.25
+4. The review score rating of an Airbnb on average decreased by 0.07, 0.16, and 0.40 for entire homes / apartments, private rooms, and shared rooms respectively 
+5. The number of Airbnb listings per host on average decreased by 3.85
+ 
 For more detailed information about the findings of the analyses read: <a href="airbnb/gen/analysis/README.md">airbnb/gen/analysis/README.md</a>   
