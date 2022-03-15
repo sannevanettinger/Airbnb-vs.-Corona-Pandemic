@@ -30,12 +30,12 @@ UPDATE: gen/analysis: Delete audit folder. Delete temp folder!! src/analysis: De
 In the main branch of this GitHub repository, several folders/files are located: airbnb (folder), .gitignore, README.md and the general makefile. After running make, three folders will be visible in the "airbnb" folder: data, gen and src. The "data" folder holds the raw data after running make. The "gen" folder consist of another folder named "analysis". In the "analysis" folder two folders can be found: input and output. The input 
 
 
-Main folders   | Content                                                                                        | Center aligned Header
-| :---         | ---:                                                                                           | :---:
-"data" folder  | data_airbnb_uk.csv                                                                             | Content Cell
-"gen" folder   | "analysis" folder:                                                                             | Content Cell
-"src" folder   | "analysis" folder: analysis_data_airbnb.R                                                      | Content Cell
-                 "data_preparation" folder: downloading_data_airbnb.R, preparation_data_airbnb.Rmd, README.md   | Content Cell
+Main folders   | Content                                                                                        
+| :---         | :---                                                                                          
+                 "data" folder  | data_airbnb_uk.csv                                                                             
+                 "gen" folder   | "analysis" folder:                                                                             
+                 "src" folder   | "analysis" folder: analysis_data_airbnb.R                                                      
+                                | "data_preparation" folder: downloading_data_airbnb.R, preparation_data_airbnb.Rmd, README.md   
 
 
 
