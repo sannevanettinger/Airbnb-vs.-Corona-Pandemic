@@ -1,21 +1,19 @@
 # Airbnb vs. The Corona Pandemic: How's Airbnb doing? 
 ## Introduction
-Welcome to the "Airbnb vs. Corona Pandemic" repository!!
-
-Interested in the effects of the Corona Pandemic on the market of traveling and tourisme? Then you're in the right place!
+Welcome to the "Airbnb vs. Corona Pandemic" repository!! Interested in the effects of the Corona Pandemic on the market of traveling and tourisme? Then you're in the right place!
 
 It seems obvious that the Corona Pandemic, which finally seems to be coming to an end, has had the result of strongly reduced travel and overnight stays. Both locally and nationally. However, nothing could be further from the truth. There are certainly Airbnb hosts who have benefited from the Corona Pandemic. 
 
 This README entails a detailed description on how to use the contents of this repository for future research. 
 
 ## CONTENT (ADD LINKS?? OTHERWISE TABLE OF CONTENT)
-1. Research motivation
-2. Setup of the repository
-3. Repository overview
-4. Software setup
-5. Running instructions
-6. Research method
-7. Conclusion
+1. [Research motivation](#1-research-motivation)
+2. [Setup of the repository](#2-setup-of-the-repository)
+3. [Repository overview](#3-repository-overview)
+4. [Software setup](#4-software-setup)
+5. [Running instructions](#5-running-instructions)
+6. [Research method](#6-research-method)
+7. [Conclusion](#7-conclusion)
 
 
 ## 1. Research motivation
@@ -33,7 +31,8 @@ TEXT
 * Download R-packages: plyr, dplyr, tidyverse, ggplot2, readr, googledrive, carat, data.table, R.utils, dint, zoo, summarytools, car, effectsize, emmeans,  agricolae. (*Important for Mac-users: Install XQuartz from www.xquarts.org*)
 * Install GNU make: To install GNU make (both Mac and Windows users) go to this link: "https://tilburgsciencehub.com/building-blocks/configure-your-computer/automation-and-workflows/make/."  
 
-## 5. Running instructions (CHECK IF DESCRIBED WELL, FOLDER NAMES)
+## 5. Running instructions 
+(CHECK IF DESCRIBED WELL, FOLDER NAMES)  
 This repository contains a complete pipeline of downloading data, data exploration, data preparation and analyses. Therefore, as a first step make sure you've cloned the repository onto your own laptop/pc. The complete pipeline is automated using "GNU make". To run this pipeline, you first need to have installed "GNU make" (see Software Setup: install GNU make). After you have done this, you open your Command Prompt (Windows) or Terminal (Mac), move to the folder "Airbnb-vs.-Corona-Pandemic" using cd and run "make". The final output can be found in the "output" folder located in the "gen/analysis" folder.
 
 ## 6. Research method 
@@ -47,6 +46,7 @@ In this research the following conceptual model applied:
 The variables "*review_scores_rating*", "*num_host_listings*", "*price*", "*room_type*", "*neighbourhood_name*" and "*quarter*" are the leading players in this research. For the analyses several *ANOVA analyses* were performed as the independent variable (i.e., quarters) is non-metric, and the dependent variables (i.e., listings, review score rating, and price) are metric. Moreover, to see whether the effect depends on the neighbourhood and room type, it was included as an interaction term.
 
 ## 7. Conclusion
+(UNDER CONSTRUCTION) 
 From our analysis we can conclude that, due to the easing of the corona restrictions mid 2021 in the United Kingdom, and the opening back up of the country, …
 1. The price of an Airbnb on average increased by £18.77
 2. The review score rating of an Airbnb on average decreased  by 0.11 
