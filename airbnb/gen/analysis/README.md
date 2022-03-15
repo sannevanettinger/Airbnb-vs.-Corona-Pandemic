@@ -5,10 +5,8 @@ To see whether an ANOVA analysis was allowed to be performed, several assumption
 
 * **Homogeneity of variance**  
 The Levene's Test is conducted twice to see the different moderation effects of neighbourhood and room type.
-
-From the Levene's Test, with moderation effect between quarter and neighbourhood, we can conclude that the variance among the groups are approximately equal, since all of the variables are higher than 0.05.  
-
-From the Levene's Test, with moderation effect between quarter and room type, we can conclude that the variance among the groups are not approximately equal, since all of the variables are lower than 0.05. As a result, the homogeneity is violated for all variables, however, this is not a problem for conducting and interpreting the ANOVA analyses since we have a large sample size. 
+1. From the Levene's Test, with moderation effect between quarter and neighbourhood, we can conclude that the variance among the groups are approximately equal, since all of the variables are higher than 0.05.  
+2. From the Levene's Test, with moderation effect between quarter and room type, we can conclude that the variance among the groups are not approximately equal, since all of the variables are lower than 0.05. As a result, the homogeneity is violated for all variables, however, this is not a problem for conducting and interpreting the ANOVA analyses since we have a large sample size. 
 
 * **Normality of the distribution**  
 From the Shapiro Wilk normality test we can conclude that all of the variables, for both moderation effects, in the sample are not normally distributed, since all of the variables have a p-value smaller than 0.05. As a result, the normality is violated for all variables, however, this is not a problem for conducting and interpreting the ANOVA analyses since we have a large sample size.  
