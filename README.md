@@ -6,7 +6,7 @@ Interested in the effects of the Corona Pandemic on the market of traveling and 
 
 It seems obvious that the Corona Pandemic, which finally seems to be coming to an end, has had the result of strongly reduced travel and overnight stays. Both locally and nationally. However, nothing could be further from the truth. There are certainly Airbnb hosts who have benefited from the Corona Pandemic. 
 
-This README entails a detailed description on how to the contents of this repository for future research. 
+This README entails a detailed description on how to use the contents of this repository for future research. 
 
 ## CONTENT (ADD LINKS?? OTHERWISE TABLE OF CONTENT)
 1. Research motivation
@@ -33,12 +33,8 @@ TEXT
 * Download R-packages: plyr, dplyr, tidyverse, ggplot2, readr, googledrive, carat, data.table, R.utils, dint, zoo, summarytools, car, effectsize, emmeans,  agricolae. (*Important for Mac-users: Install XQuartz from www.xquarts.org*)
 * Install GNU make: To install GNU make (both Mac and Windows users) go to this link: "https://tilburgsciencehub.com/building-blocks/configure-your-computer/automation-and-workflows/make/."  
 
-## 5. Running instructions 
-TEXT
-
-The complete pipeline of downloading data, data exploration, data preparation and analyses is automated using "GNU make". To run this pipeline, you first need to have installed "GNU make" (see Softwar Setup: install GNU make). ...
-
-
+## 5. Running instructions (CHECK IF DESCRIBED WELL, FOLDER NAMES)
+This repository contains a complete pipeline of downloading data, data exploration, data preparation and analyses. Therefore, as a first step make sure you've cloned the repository onto your own laptop/pc. The complete pipeline is automated using "GNU make". To run this pipeline, you first need to have installed "GNU make" (see Software Setup: install GNU make). After you have done this, you open your Command Prompt (Windows) or Terminal (Mac), move to the folder "Airbnb-vs.-Corona-Pandemic" using cd and run "make". The final output can be found in the "output" folder located in the "gen/analysis" folder.
 
 ## 6. Research method 
 To address the aforementioned research question multiple AirBnB datasets, derived from InsideAirbnb, are combined to one big dataset containing data from three cities in the United Kingdom: London, Bristol and Great Manchester. In total 11 different datasets are combined, each containing information per quarter.  
