@@ -6,7 +6,7 @@ It seems obvious that the Corona Pandemic, which finally seems to be coming to a
 
 This README entails a detailed description on how to use the contents of this repository for future research. 
 
-## CONTENT (ADD LINKS?? OTHERWISE TABLE OF CONTENT)
+## TABLE OF CONTENT
 1. [Research motivation](#1-research-motivation)
 2. [Setup of the repository](#2-setup-of-the-repository)
 3. [Repository overview](#3-repository-overview)
@@ -46,7 +46,7 @@ In this research the following conceptual model applied:
 The variables "*review_scores_rating*", "*num_host_listings*", "*price*", "*room_type*", "*neighbourhood_name*" and "*quarter*" are the leading players in this research. For the analyses several *ANOVA analyses* were performed as the independent variable (i.e., quarters) is non-metric, and the dependent variables (i.e., listings, review score rating, and price) are metric. Moreover, to see whether the effect depends on the neighbourhood and room type, it was included as an interaction term.
 
 ## 7. Conclusion
-(UNDER CONSTRUCTION) 
+(UNDER CONSTRUCTION)  
 From our analysis we can conclude that, due to the easing of the corona restrictions mid 2021 in the United Kingdom, and the opening back up of the country, …
 1. The price of an Airbnb on average increased by £18.77
 2. The review score rating of an Airbnb on average decreased  by 0.11 
