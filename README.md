@@ -53,6 +53,8 @@ From our analysis we can conclude that, due to the easing of the corona restrict
 2. The review score rating of an Airbnb on average decreased  by 0.11 
 3. The number of Airbnb listings per host on average increased by 1.25
 4. The review score rating of an Airbnb on average decreased by 0.07, 0.16, and 0.40 for entire homes / apartments, private rooms, and shared rooms respectively 
-5. The number of Airbnb listings per host on average decreased by 3.85
+5. The number of Airbnb listings per host on average decreased by 3.85  
+
+(INCLUDE PLOTS: plot_listings.pdf & plot_review_score.pdf)
  
 For more detailed information about the findings of the analyses read: <a href="airbnb/gen/analysis/README.md">airbnb/gen/analysis/README.md</a>   
