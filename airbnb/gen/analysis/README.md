@@ -4,10 +4,14 @@
 To see whether an ANOVA analysis was allowed to be performed, several assumptions had to be tested: homogeneity of variance, normality of the distribution and independence of observations. For this, we set up an sample of 5000 observations.  
 
 * **Homogeneity of variance**  
-From the Levene's Test we can conclude that the variance among the groups are approximately equal, since all of the variables are higher than 0.05.  
+The Levene's Test is conducted twice to see the different moderation effects of neighbourhood and room type.
+
+From the Levene's Test, with moderation effect between quarter and neighbourhood, we can conclude that the variance among the groups are approximately equal, since all of the variables are higher than 0.05.  
+
+From the Levene's Test, with moderation effect between quarter and room type, we can conclude that the variance among the groups are not approximately equal, since all of the variables are lower than 0.05. As a result, the homogeneity is violated for all variables, however, this is not a problem for conducting and interpreting the ANOVA analyses since we have a large sample size. 
 
 * **Normality of the distribution**  
-From the Shapiro Wilk normality test we can conclude that all of the variables in the sample are not normally distributed, since all of the variables have a p-value smaller than 0.05. As a result, the normality is violated for all variables, however, this is not a problem for conducting and interpreting the ANOVA analyses since we have a large sample size.  
+From the Shapiro Wilk normality test we can conclude that all of the variables, for both moderation effects, in the sample are not normally distributed, since all of the variables have a p-value smaller than 0.05. As a result, the normality is violated for all variables, however, this is not a problem for conducting and interpreting the ANOVA analyses since we have a large sample size.  
 
 * **Independence of observations**  
 Independence of observations is only achieved if the experiment is set up correctly. That is, when the sample is randomly selected. Since we have used the function 'sample_n' to collect 5000 observations in a newly created data frame, we can conclude that the observations are independent and we can continue with the ANOVA analyses.
