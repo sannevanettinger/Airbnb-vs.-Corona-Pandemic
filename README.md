@@ -6,7 +6,7 @@ It seems obvious that the Corona Pandemic, which finally seems to be coming to a
 
 This README entails a detailed description on how to use the contents of this repository for future research. 
 
-## TABLE OF CONTENT
+## Table of content
 1. [Research motivation](#1-research-motivation)
 2. [Setup of the repository](#2-setup-of-the-repository)
 3. [Repository overview](#3-repository-overview)
@@ -22,10 +22,11 @@ It is generally known that the impact of the Corona Pandemic on the traveling an
 Whereas for many countries the Corona Pandemic played a huge role in daily life at the beginning of 2021, this was much less the case at the end of 2021. As the United Kingdom was one of the countries that let go of the Corona measures first. It is interesting to see whether there are certain changes in the traveling and tourism market in the United Kingdom. For this short research project the general question reads as follows: "*Which types of rooms in which neighbourhoods benefited the most from the Corona Pandemic in the United Kingdom?*"  
   
 ## 2. Setup of the repository  
-TEXT: Display overview of the repsitory.  
+![directory-tree-15-3-2022](https://user-images.githubusercontent.com/89737678/158386347-f50e5597-5963-4d81-8a38-cba3a8af399f.PNG)
 
 ## 3. Repository overview 
-TEXT  
+(CHECK IF DESCRIBED WELL, FOLDER/FILE NAMES)  
+In the main branch of this GitHub repository, several folders/files are located: airbnb (folder), .gitignore, README.md and the general makefile. 
 
 ## 4. Software setup 
 * Download R-packages: plyr, dplyr, tidyverse, ggplot2, readr, googledrive, carat, data.table, R.utils, dint, zoo, summarytools, car, effectsize, emmeans,  agricolae. (*Important for Mac-users: Install XQuartz from www.xquarts.org*)
