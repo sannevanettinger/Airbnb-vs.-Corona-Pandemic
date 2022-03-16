@@ -56,14 +56,12 @@ From our analysis we can conclude that, due to the easing of the corona restrict
 1. The price of an Airbnb on average increased by £18.77
 2. The review score rating of an Airbnb on average decreased  by 0.11 
 3. The number of Airbnb listings per host on average increased by 1.25
-4. The review score rating of an Airbnb on average decreased by 0.07, 0.16, and 0.40 for entire homes / apartments, private rooms, and shared rooms respectively 
-5. The number of Airbnb listings per host on average decreased by 3.85  
+4. The number of Airbnb listings per host for hotel rooms on average decreased by 38.50 (see figure plot_listings.pdf)
+5. The review score rating of an Airbnb on average decreased by 0.07, 0.16, and 0.40 for entire homes / apartments, private rooms, and shared rooms respectively (see figure plot_review_score.pdf)
 
-**plot_listings.pdf**
 ![plot_number_of_listings](https://user-images.githubusercontent.com/89737678/158396862-3da1acfd-0479-4864-a6ae-3e8e0cb6fe19.jpeg)
 Figure: plot_listings.pdf
 
-**plot_review_score.pdf**
 ![plot_review_score](https://user-images.githubusercontent.com/89737678/158396868-4ce77f28-7342-45f0-b3f2-abcd707825bf.jpeg)
 Figure: plot_review_score.pdf
 
