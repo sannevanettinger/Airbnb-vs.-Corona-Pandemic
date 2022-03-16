@@ -94,6 +94,9 @@ eta_squared(mod5, ci=0.95, partial = TRUE)
 
 eta_squared(mod6, ci=0.95, partial = TRUE)
 
+# Create output directory
+dir.create("../../gen/analysis/output/")
+
 # Plot review_score over time
 data_airbnb_uk_cleaned$quarter <- as.numeric(data_airbnb_uk_cleaned$quarter)
 dt_review_score <- as.data.table(data_airbnb_uk_cleaned)
