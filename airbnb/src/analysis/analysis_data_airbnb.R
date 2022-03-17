@@ -1,13 +1,6 @@
 # ANOVA ANALYSIS
 
-# Installing and loading the packages
-# install.packages("car")
-# install.packages("effectsize")
-# install.packages("emmeans")
-# install.packages("agricolae")
-# install.packages("dplyr")
-# install.packages("data.table")
-# install.packages("ggplot2")
+# Load the R-packages
 library(car)
 library(effectsize)
 library(emmeans)
@@ -42,7 +35,7 @@ shapiro.test(data_airbnb_uk_cleaned_sample$price)
 shapiro.test(data_airbnb_uk_cleaned_sample$review_scores_rating_rescaled)
 shapiro.test(data_airbnb_uk_cleaned_sample$num_host_listings)
 
-#ANOVA with quarter as independent variable and price, review_scores_rating_rescaled, and calculated_host_listings_count as dependent variables
+# ANOVA with quarter as independent variable and price, review_scores_rating_rescaled, and calculated_host_listings_count as dependent variables
 anova_1 <- aov(price ~ quarter, data_airbnb_uk_cleaned)
 summary(anova_1)
 
@@ -52,21 +45,21 @@ summary(anova_2)
 anova_3 <- aov(num_host_listings ~ quarter, data_airbnb_uk_cleaned)
 summary(anova_3)
 
-#Effect size for the ANOVAs
+# Effect size for the ANOVAs
 eta_squared(anova_1, ci=0.95, partial = TRUE)
 
 eta_squared(anova_2, ci=0.95, partial = TRUE)
 
 eta_squared(anova_3, ci=0.95, partial = TRUE)
 
-#Post hoc test: Tukey Test
+# Post hoc test: Tukey Test
 TukeyHSD(anova_1)
 
 TukeyHSD(anova_2)
 
 TukeyHSD(anova_3)
 
-#Moderation effect of neighbourhood and room_type (be patient when loading the moderators)
+# Moderation effect of neighbourhood and room_type (Note: Loading the moderators will take a while)
 ## Neighbourhood
 mod1 <- aov(price ~ quarter*neighbourhood_name, data = data_airbnb_uk_cleaned)
 summary(mod1)
