@@ -19,7 +19,7 @@ data_airbnb_uk_cleaned$quarter <- as.factor(data_airbnb_uk_cleaned$quarter)
 # Randomly selecting 5000 rows from the dataset to investigate homoskedasticity and normality
 data_airbnb_uk_cleaned_sample <- sample_n(data_airbnb_uk_cleaned, 5000)
 
-# homoskedasticity
+# Homoskedasticity
 ## neighbourhood
 leveneTest(price ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample)
 leveneTest(review_scores_rating_rescaled ~ quarter*neighbourhood_name, data_airbnb_uk_cleaned_sample)
@@ -30,7 +30,7 @@ leveneTest(price ~ quarter*room_type, data_airbnb_uk_cleaned_sample)
 leveneTest(review_scores_rating_rescaled ~ quarter*room_type, data_airbnb_uk_cleaned_sample)
 leveneTest(num_host_listings ~ quarter*room_type, data_airbnb_uk_cleaned_sample)
 
-# normality
+# Normality
 shapiro.test(data_airbnb_uk_cleaned_sample$price)
 shapiro.test(data_airbnb_uk_cleaned_sample$review_scores_rating_rescaled)
 shapiro.test(data_airbnb_uk_cleaned_sample$num_host_listings)
@@ -59,7 +59,7 @@ TukeyHSD(anova_2)
 
 TukeyHSD(anova_3)
 
-# Moderation effect of neighbourhood and room_type (Note: Loading the moderators will take a while)
+# Moderation effect of neighbourhood and room_type (Note: Loading the moderators will take some time)
 ## Neighbourhood
 mod1 <- aov(price ~ quarter*neighbourhood_name, data = data_airbnb_uk_cleaned)
 summary(mod1)
@@ -125,7 +125,7 @@ dev.off()
 ## ANOVA
 capture.output(summary(anova_1),  file = "../../gen/analysis/output/anova1_airbnb.doc")
 capture.output(summary(anova_2),  file = "../../gen/analysis/output/anova2_airbnb.doc")
-capture.output(summary(anova_3),  file = "../..gen/analysis/output/anova3_airbnb.doc")
+capture.output(summary(anova_3),  file = "../../gen/analysis/output/anova3_airbnb.doc")
 capture.output(summary(mod1),  file = "../../gen/analysis/output/mod1_airbnb.doc")
 capture.output(summary(mod2),  file = "../../gen/analysis/output/mod2_airbnb.doc")
 capture.output(summary(mod3),  file = "../../gen/analysis/output/mod3_airbnb.doc")
