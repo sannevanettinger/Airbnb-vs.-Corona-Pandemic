@@ -13,22 +13,6 @@ knitr::opts_chunk$set(
 ```
 
 ```{r, include=FALSE}
-# Install packages ONLY ONCE!
-#install.packages("plyr")
-#install.packages("dplyr")
-#install.packages("tidyverse")
-#install.packages("ggplot2")
-#install.packages("readr")
-#install.packages("googledrive")
-#install.packages("caret")
-#install.packages("data.table")
-#install.packages("R.utils")
-#install.packages("dint")
-#install.packages("zoo")
-#install.packages("summarytools")
-```
-
-```{r, include=FALSE}
 # Loading packages
 library(plyr)
 library(dplyr)
