@@ -1,6 +1,24 @@
 # title: "Download data Airbnb - United Kingdom"
 # authors: "Team 2: Sanne van Ettinger, Claudia Berkhof, Demi van de Pol, Jurg Jacobs, Rob van der Wielen"
 
+# Install R-packages
+install.packages("agricolae")
+install.packages("car")
+install.packages("caret")
+install.packages("data.table")
+install.packages("dint")
+install.packages("dplyr")
+install.packages("effectsize")
+install.packages("emmeans")
+install.packages("ggplot2")
+install.packages("googledrive")
+install.packages("plyr")
+install.packages("R.utils")
+install.packages("readr")
+install.packages("summarytools")
+install.packages("tidyverse")
+install.packages("zoo")
+
 # Loading packages
 library(plyr)
 library(dplyr)
