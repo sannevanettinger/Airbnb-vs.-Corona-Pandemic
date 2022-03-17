@@ -98,6 +98,7 @@ eta_squared(mod6, ci=0.95, partial = TRUE)
 dir.create("../../gen/analysis/output/")
 
 # Plot review_score over time
+pdf("../../gen/analysis/output/plot_review_score.pdf")
 data_airbnb_uk_cleaned$quarter <- as.numeric(data_airbnb_uk_cleaned$quarter)
 dt_review_score <- as.data.table(data_airbnb_uk_cleaned)
 plot_review_score <- dt_review_score[, .(mean_review_score = mean(review_scores_rating_rescaled)), 
@@ -110,9 +111,10 @@ ggplot(data = plot_review_score, aes(x = quarter, y = mean_review_score)) +
   xlab("Quarters 2021") +
   ylab("Review score") +
   ylim(0, 5)
-dev.print(pdf, "../../gen/analysis/output/plot_review_score.pdf")
+dev.off()
 
 # Plot number of listings over time
+pdf("../../gen/analysis/output/plot_listings.pdf")
 dt_listings <- as.data.table(data_airbnb_uk_cleaned)
 plot_listings <- dt_listings[, .(mean_listings = mean(num_host_listings)), 
                              by = .(quarter, room_type)]
@@ -124,7 +126,7 @@ ggplot(data = plot_listings, aes(x = quarter, y = mean_listings)) +
   xlab("Quarters 2021") +
   ylab("Number of listings") +
   ylim(0, 100)
-dev.print(pdf, "../../gen/analysis/output/plot_listings.pdf")
+dev.off()
 
 # Save ANOVA & assumptions output
 ## ANOVA
