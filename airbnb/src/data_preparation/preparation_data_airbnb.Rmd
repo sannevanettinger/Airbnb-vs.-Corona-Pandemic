@@ -5,14 +5,14 @@ date: "3/8/2022"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 knitr::opts_chunk$set(
 	message = FALSE,
 	warning = FALSE,
 	include = FALSE)
 ```
 
-```{r Installing packages, include=FALSE}
+```{r, include=FALSE}
 # Install packages ONLY ONCE!
 #install.packages("plyr")
 #install.packages("dplyr")
@@ -28,7 +28,7 @@ knitr::opts_chunk$set(
 #install.packages("summarytools")
 ```
 
-```{r Loading packages, include=FALSE}
+```{r, include=FALSE}
 # Loading packages
 library(plyr)
 library(dplyr)
@@ -44,7 +44,7 @@ library(zoo)
 library(summarytools)
 ```
 
-```{r Import raw data, include=FALSE}
+```{r, include=FALSE}
 # Import raw data
 data_airbnb_uk <- data.frame(fread("../../data/data_airbnb_uk.csv"))
 ```
@@ -72,30 +72,33 @@ data_airbnb_uk <- data.frame(fread("../../data/data_airbnb_uk.csv"))
 head(data_airbnb_uk)
 ```
 
-```{r Summary statistics on the complete dataset}
+```{r}
 summary(data_airbnb_uk)
 ```
 
-```{r Summary statistics variable: city}
+#### Summary statistics variable: city
+```{r}
 dfSummary(data_airbnb_uk$city)
 ```
 
-```{r Summary statistics variable: neighbourhood_cleansed (1)}
+#### Summary statistics variable: neighbourhood_cleansed
+```{r}
 # Number of neighbourhoods in total
 unique(data_airbnb_uk$neighbourhood_cleansed)
 ```
 
-```{r Summary statistics variable: neighbourhood_cleansed (2)}
+```{r}
 # Count combinations of cities and neighbourhoods
 data_airbnb_uk %>% 
   count(neighbourhood_cleansed, city, sort = TRUE)
 ```
 
-```{r Summary statistics variable: room_type (1)}
+#### Summary statistics variable: room_type
+```{r}
 dfSummary(data_airbnb_uk$room_type)
 ```
 
-```{r Summary statistics variable: room_type (2)}
+```{r}
 # Plot room_type overall
 ggplot(data_airbnb_uk, aes(room_type)) +
   geom_bar(stat = "count", fill = "red") +
@@ -104,7 +107,7 @@ ggplot(data_airbnb_uk, aes(room_type)) +
   labs(y = "room_type_count")
 ```
 
-```{r Summary statistics variable: room_type (3)}
+```{r}
 # Plot room_type per city
 ggplot(aes(x = room_type), data = data_airbnb_uk) +
   geom_bar(aes(fill = city), colour = "grey20", lwd = 0.5) +
@@ -113,21 +116,24 @@ ggplot(aes(x = room_type), data = data_airbnb_uk) +
   labs(y = "room_type_count")
 ```
 
-```{r Summary statistics London: neighbourhood_cleansed & room_type}
+#### Summary statistics London: neighbourhood_cleansed & room_type
+```{r}
 data_airbnb_london <- data_airbnb_uk %>% 
   filter(city == "london")
 dfSummary(data_airbnb_london$neighbourhood_cleansed)
 dfSummary(data_airbnb_london$room_type)
 ```
 
-```{r Summary statistics Great Manchester: neighbourhood_cleansed & room_type}
+#### Summary statistics Great Manchester: neighbourhood_cleansed & room_type
+```{r}
 data_airbnb_great_manchester <- data_airbnb_uk %>% 
   filter(city == "great manchester")
 dfSummary(data_airbnb_great_manchester$neighbourhood_cleansed)
 dfSummary(data_airbnb_great_manchester$room_type)
 ```
 
-```{r Summary statistics Bristol: neighbourhood_cleansed & room_type}
+#### Summary statistics Bristol: neighbourhood_cleansed & room_type
+```{r}
 data_airbnb_bristol <- data_airbnb_uk %>% 
   filter(city == "bristol")
 dfSummary(data_airbnb_bristol$neighbourhood_cleansed)
@@ -137,32 +143,34 @@ dfSummary(data_airbnb_bristol$room_type)
 
 ### 1.2 Detect the origin of missing values
 
-```{r Create new dataset NA's}
+```{r}
 # Create new dataset including only the observations that have NA's for review_scores_rating
 data_airbnb_uk_na <- data_airbnb_uk[is.na(data_airbnb_uk$review_scores_rating),]
 ```
 
-```{r Detect origin missing values using host_is_superhost}
+#### Detect origin missing values using host_is_superhost
+```{r}
 data_airbnb_uk %>%
   count(host_is_superhost)
 ```
 
-```{r Detect origin missing values using host_is_superhost}
+```{r}
 data_airbnb_uk_na %>%
   count(host_is_superhost)
 ```
 
-```{r Detect origin missing values using host_since}
+#### Detect origin missing values using host_since
+```{r}
 data_host <- data_airbnb_uk %>%
   count(host_since)
 ```
 
-```{r Detect origin missing values using host_since}
+```{r}
 data_host_na <- data_airbnb_uk_na %>%
   count(host_since)
 ```
 
-```{r Detect origin missing values using host_since}
+```{r}
 # Plot the data for the dataset without NA's using ggplot
 ggplot(data = data_host, aes(x = host_since, y = n)) +
   geom_bar(stat = "identity", fill = "purple") +
@@ -170,7 +178,7 @@ ggplot(data = data_host, aes(x = host_since, y = n)) +
               x = "Date", y = "Number of host")
 ```
 
-```{r Detect origin missing values using host_since}
+```{r}
 # Plot the data for the dataset with NA's using ggplot
 ggplot(data = data_host_na, aes(x = host_since, y = n)) +
   geom_bar(stat = "identity", fill = "purple") +
@@ -178,7 +186,7 @@ ggplot(data = data_host_na, aes(x = host_since, y = n)) +
               x = "Date", y = "Number of host")
 ```
 
-```{r Detect origin missing values using host_since}
+```{r}
 # Convert data to years for the dataset without NA's
 dates <- as.POSIXct(data_host$host_since, format="%Y-%m-%d")
 dates_2 <- format(dates, format="%Y")
@@ -187,7 +195,7 @@ dates_2 <- as.data.frame(dates_2)
 data_host$year <- dates_2$dates
 ```
 
-```{r Detect origin missing values using host_since}
+```{r}
 # Plot the converted data for the dataset without NA's using ggplot
 ggplot(data = data_host, aes(x = year, y = n)) +
   geom_bar(stat = "identity", fill = "purple") +
@@ -195,7 +203,7 @@ ggplot(data = data_host, aes(x = year, y = n)) +
               x = "year", y = "Number of host")
 ```
 
-```{r Detect origin missing values using host_since}
+```{r}
 # Convert data to years for dataset with NA's
 dates_na <- as.POSIXct(data_host_na$host_since, format="%Y-%m-%d")
 dates_2_na <- format(dates_na, format="%Y")
@@ -204,7 +212,7 @@ dates_2_na <- as.data.frame(dates_2_na)
 data_host_na$year <- dates_2_na$dates
 ```
 
-```{r Detect origin missing values using host_since}
+```{r}
 # Plot the converted data for the dataset with NA's using ggplot
 ggplot(data = data_host_na, aes(x = year, y = n)) +
   geom_bar(stat = "identity", fill = "purple") +
@@ -217,8 +225,8 @@ ggplot(data = data_host_na, aes(x = year, y = n)) +
 ## 2. Data Preparation
 ### 2.1 Create new variables as reference to the quarterly data
 
-```{r Create new variables: quarter, year, year_quarter}
-# creating new variables
+```{r}
+# Create new variables: quarter, year, year_quarter
 data_airbnb_uk$quarter <- get_quarter(data_airbnb_uk$last_scraped)
 data_airbnb_uk$year <- get_year(data_airbnb_uk$last_scraped)
 data_airbnb_uk$year_quarter <- as.yearqtr(data_airbnb_uk$last_scraped, format="%Y-%m-%d")
@@ -228,7 +236,7 @@ data_airbnb_uk$year_quarter <- format(data_airbnb_uk$year_quarter, format = "%Y-
 
 ### 2.2 Delete unnecessary columns
 
-```{r Delete unnecessary columns}
+```{r}
 data_airbnb_uk_cleaned <- data_airbnb_uk %>% 
   select(id, city, quarter, year, year_quarter, neighbourhood_cleansed, room_type, calculated_host_listings_count, review_scores_rating, price)
 ```
@@ -236,7 +244,7 @@ data_airbnb_uk_cleaned <- data_airbnb_uk %>%
 
 ### 2.3 Rename variables "neighbourhood_cleansed" and "calculated_host_listings_count"
 
-```{r Rename variables neighborhood_cleansed and calculated_host_listings_count}
+```{r}
 data_airbnb_uk_cleaned <- data_airbnb_uk_cleaned %>% 
   rename(neighbourhood_name = neighbourhood_cleansed, num_host_listings = calculated_host_listings_count)
 ```
@@ -244,7 +252,7 @@ data_airbnb_uk_cleaned <- data_airbnb_uk_cleaned %>%
 
 ### 2.4 Rescale the variable "review_scores_rating"
 
-```{r Rescale the variable review_scores_rating}
+```{r}
 data_airbnb_uk_cleaned <- data_airbnb_uk_cleaned %>% 
   mutate(review_scores_rating_rescaled = ifelse(review_scores_rating>5,review_scores_rating/20, review_scores_rating))
 ```
@@ -252,7 +260,7 @@ data_airbnb_uk_cleaned <- data_airbnb_uk_cleaned %>%
 
 ### 2.5 Change the variable "price" to numeric
 
-```{r Change the variable price}
+```{r}
 # Remove the dollar sign and commas (for prices above thousand)
 data_airbnb_uk_cleaned$price <- gsub('[$,]', '', data_airbnb_uk_cleaned$price)
 
@@ -266,7 +274,7 @@ class(data_airbnb_uk_cleaned$price)
 
 ### 2.6 Remove NA's from the dataset
 
-```{r Removing the missing values}
+```{r}
 # Removing the missing values and create a new dataset without the NA's
 data_airbnb_uk_cleaned <- data_airbnb_uk_cleaned %>% 
   drop_na(review_scores_rating, review_scores_rating_rescaled)
@@ -274,31 +282,33 @@ data_airbnb_uk_cleaned <- data_airbnb_uk_cleaned %>%
 
 
 ### 2.7 Detect outliers in the data (data_airbnb_uk_cleaned)
-
-```{r Detecting outliers num_host_listings (1)}
+#### Detecting outliers num_host_listings 
+```{r}
 # Plot num_host_listings
 boxplot(data_airbnb_uk_cleaned$num_host_listings,
   ylab = "num_host_listings_count")
 ```
 
-```{r Detecting outliers num_host_listings (2)}
+```{r}
 # Filter num_host_listings on more than 600 listings
 data_airbnb_uk_outliers_I <- data_airbnb_uk_cleaned %>% 
   filter(num_host_listings > 600)
 ```
 
-```{r Detecting outliers: review_rating_score_rescaled}
+#### Detecting outliers: review_rating_score_rescaled
+```{r}
 # plot review_scores_rating_rescaled
 boxplot(data_airbnb_uk_cleaned$review_scores_rating_rescaled,
   ylab = "review_scores_rating_rescaled_count")
 ```
 
-```{r Detecting outliers: price (1)}
+#### Detecting outliers: price
+```{r}
 boxplot(data_airbnb_uk_cleaned$price,
   ylab = "price")
 ```
 
-```{r Detecting outliers: price (2)}
+```{r}
 data_airbnb_uk_outliers_II <- data_airbnb_uk_cleaned %>% 
   filter(price > 10000)
 ```
@@ -308,23 +318,27 @@ data_airbnb_uk_outliers_II <- data_airbnb_uk_cleaned %>%
 ## 3. After cleaning
 ### 3.1 New summary statistics
 
+#### Summary statistics on the complete dataset
 ```{r}
 head(data_airbnb_uk_cleaned)
 ```
 
-```{r Summary statistics on the complete dataset}
+```{r}
 summary(data_airbnb_uk_cleaned)
 ```
 
-```{r Summary statistics variable: city}
+#### Summary statistics variable: city
+```{r}
 dfSummary(data_airbnb_uk_cleaned$city)
 ```
 
-```{r Summary statistics variable: room_type}
+#### Summary statistics variable: room_type
+```{r}
 dfSummary(data_airbnb_uk_cleaned$room_type)
 ```
 
-```{r Summary statistics variable: room_type & city}
+#### Summary statistics variable: room_type & city
+```{r}
 # Plot room_type per city
 ggplot(aes(x = room_type), data = data_airbnb_uk_cleaned) +
   geom_bar(aes(fill = city), colour = "grey20", lwd = 0.5) +
@@ -333,11 +347,13 @@ ggplot(aes(x = room_type), data = data_airbnb_uk_cleaned) +
   labs(y = "room_type_count")
 ```
 
-```{r Summary statistics variable: neighbourhood_name }
+#### Summary statistics variable: neighbourhood_name 
+```{r}
 unique(data_airbnb_uk_cleaned$neighbourhood_name)
 ```
 
-```{r Summary statistics variable: quarter}
+#### Summary statistics variable: quarter
+```{r}
 dfSummary(data_airbnb_uk_cleaned$quarter)
 ```
 
@@ -345,7 +361,7 @@ dfSummary(data_airbnb_uk_cleaned$quarter)
 
 ### 3.2 Write the cleaned data to a csv file
 
-```{r Write the cleaned data to a CSV file}
+```{r}
 # Exporting the cleaned data to a CSV file
 dir.create("../../gen/analysis/input/")
 fwrite(data_airbnb_uk_cleaned, '../../gen/analysis/input/data_airbnb_uk_cleaned.csv', row.names = F)
