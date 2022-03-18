@@ -27,7 +27,7 @@ Whereas for many countries the Corona Pandemic played a huge role in daily life 
 In the main branch of this GitHub repository, several folders/files are located: airbnb (folder), .gitignore, README.md and the general makefile. After running make, three subfolders will be visible in the "airbnb" folder: data, gen and src. 
 
 * The "**data**" folder holds the raw data (data_airbnb_uk.csv) after running make.  
-* The "**gen**" folder consists of another subfolder named "analysis". In gen/analysis two subfolders can be found: input and output. The "*input*" folder holds the cleaned dataset (data_airbnb_uk_cleaned.csv). The "*output*" folder holds the results of the performed analyses captured in PDF files.  
+* The "**gen**" folder consists of another subfolder named "analysis". In gen/analysis three subfolders can be found after running make: input, output and temp. The "*input*" folder holds the cleaned dataset (data_airbnb_uk_cleaned.csv). The "*output*" folder holds the results of the performed analyses captured in PDF files. The *temp* folder holds a complete file with all results of the analyses (analysis.log). 
 * The "**src**" folder consists of two subfolders: analysis and data_preparation. In src/analysis the R-script to run the analyses (analysis_data_airbnb.R) and the related makefile can be found. In src/data_preparation, the following files can be found: the R-script to download the data from InsideAirbnb (downloading_data_airbnb.R), the RMarkdown script for data preparation (preparation_data_airbnb.Rmd), the related makefile and the README with elaboration on choices made (README.md).  
 
 ## 4. Software setup 
