@@ -159,3 +159,9 @@ capture.output(leveneTest(num_host_listings ~ quarter*room_type, data_airbnb_uk_
 capture.output(shapiro.test(data_airbnb_uk_cleaned_sample$price), file = "../../gen/analysis/output/shapiro_test1_airbnb.doc")
 capture.output(shapiro.test(data_airbnb_uk_cleaned_sample$review_scores_rating_rescaled), file = "../../gen/analysis/output/shapiro_test2_airbnb.doc")
 capture.output(shapiro.test(data_airbnb_uk_cleaned_sample$num_host_listings), file = "../../gen/analysis/output/shapiro_test3_airbnb.doc")
+
+# Create temp file 
+dir.create('../../gen/analysis/temp/', recursive=T)
+sink('../../gen/analysis/temp/analysis.log')
+cat('done')
+sink()
