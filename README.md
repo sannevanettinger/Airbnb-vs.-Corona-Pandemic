@@ -1,6 +1,6 @@
 # Airbnb vs. The Corona Pandemic: How's Airbnb doing? 
 ## Introduction
-Welcome to the "Airbnb vs. Corona Pandemic" repository!! Interested in the effects of the Corona Pandemic on the market of traveling and tourisme? Then you're in the right place!
+Welcome to the "Airbnb vs. Corona Pandemic" repository! Interested in the effects of the Corona Pandemic on the market of traveling and tourism? Then you're in the right place!
 
 It seems obvious that the Corona Pandemic, which finally seems to be coming to an end, has had the result of strongly reduced travel and overnight stays. Both locally and nationally. However, nothing could be further from the truth. There are certainly Airbnb hosts who have benefited from the Corona Pandemic. 
 
