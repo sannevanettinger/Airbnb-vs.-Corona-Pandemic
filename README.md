@@ -31,7 +31,7 @@ In the main branch of this GitHub repository, several folders/files are located:
 * The "**src**" folder consists of two subfolders: analysis and data_preparation. In src/analysis the R-script to run the analyses (analysis_data_airbnb.R) and the related makefile can be found. In src/data_preparation, the following files can be found: the R-script to download the data from InsideAirbnb (downloading_data_airbnb.R), the RMarkdown script for data preparation (preparation_data_airbnb.Rmd), the related makefile and the README with elaboration on choices made (README.md).  
 
 ## 4. Software setup 
-* Download R-packages: plyr, dplyr, tidyverse, ggplot2, readr, googledrive, carat, data.table, R.utils, dint, zoo, summarytools, car, effectsize, emmeans,  agricolae. (*Important for Mac-users: Install XQuartz from www.xquarts.org*)
+* Download R-packages: plyr, dplyr, tidyverse, ggplot2, readr, googledrive, caret, data.table, R.utils, dint, zoo, summarytools, car, effectsize, emmeans,  agricolae. (*Important for Mac-users: Install XQuartz from www.xquarts.org*)
 * Install GNU make: To install GNU make (both Mac and Windows users) go to this link: "https://tilburgsciencehub.com/building-blocks/configure-your-computer/automation-and-workflows/make/."  
 
 ## 5. Running instructions 
